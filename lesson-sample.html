@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" data-lang="en" data-title-vi="Bài mẫu: Một đơn hàng Amazon đi như thế nào | Ecom Lab">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample lesson: How an Amazon order travels | Ecom Lab</title>
+<meta name="description" content="A sample Ecom Lab lesson on how an Amazon order moves from click to doorstep, and who does the work.">
+<script>(function(){var l='en';try{l=localStorage.getItem('ecomlab-lang')||'en'}catch(e){}if(l!=='vi')l='en';var h=document.documentElement;h.lang=l;h.dataset.lang=l;h.classList.add('js')})();</script>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main"><span data-l="en">Skip to main content</span><span data-l="vi">Đi tới nội dung chính</span></a>
+
+<header class="site-header on-dark">
+  <div class="container">
+    <a class="logo" href="index.html" aria-label="Ecom Lab home" data-aria-vi="Trang chủ Ecom Lab"><span class="logo-mark" aria-hidden="true">EL</span>Ecom Lab</a>
+    <nav class="nav" aria-label="Main" data-aria-vi="Điều hướng chính">
+      <a href="about.html"><span data-l="en">About</span><span data-l="vi">Về mình</span></a>
+      <a href="course.html" aria-current="page"><span data-l="en">Free course</span><span data-l="vi">Khoá miễn phí</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language" data-aria-vi="Ngôn ngữ">
+      <button type="button" data-set-lang="en">EN</button>
+      <button type="button" data-set-lang="vi">VI</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" data-lesson="sample">
+  <section class="page-hero on-dark">
+    <div class="container container--text">
+      <p class="eyebrow"><span data-l="en">Sample lesson</span><span data-l="vi">Bài mẫu</span></p>
+      <h1><span data-l="en">How an Amazon order travels</span><span data-l="vi">Một đơn hàng Amazon đi như thế nào</span></h1>
+    </div>
+  </section>
+  <div class="container container--text" style="padding-block:48px var(--section)">
+    <p class="draft-note"><span data-l="en">Draft: this sample shows the lesson layout. Hung still needs to review the content.</span><span data-l="vi">Bản nháp: bài mẫu này để xem bố cục bài học. Hung vẫn cần duyệt lại nội dung.</span></p>
+
+    <!-- VIDEO: paste a YouTube link inside data-youtube="" and the video replaces this slot. -->
+    <div class="video on-dark" data-youtube="" data-video-title="How an Amazon order travels">
+      <div>
+        <svg class="icon" aria-hidden="true"><use href="#i-live"/></svg>
+        <strong><span data-l="en">Video coming soon</span><span data-l="vi">Video sắp ra mắt</span></strong>
+        <p data-l="en">The notes below cover this lesson in the meantime.</p>
+        <p data-l="vi">Trong lúc chờ, bạn có thể đọc ghi chú bên dưới.</p>
+      </div>
+    </div>
+
+    <section class="lesson-block">
+      <h2><span data-l="en">Key takeaways</span><span data-l="vi">Ý chính</span></h2>
+      <ul class="takeaways">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-l="en">Every order passes the same four stops: order placed, pick and pack, on the road, delivered.</span><span data-l="vi">Mọi đơn hàng đều đi qua bốn chặng: nhận đơn, lấy và đóng gói, trên đường giao, đã giao.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-l="en">The main question is who does the work: Amazon (FBA), you (FBM), or a third-party warehouse (3PL) working for you.</span><span data-l="vi">Câu hỏi chính là ai làm phần việc đó: Amazon (FBA), bạn (FBM), hay một kho bên thứ ba (3PL) làm thay bạn.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-l="en">Delivery speed is partly decided before the order exists, by where your stock already sits.</span><span data-l="vi">Tốc độ giao hàng được quyết định một phần từ trước khi có đơn, bởi việc hàng của bạn đang nằm ở đâu.</span></li>
+      </ul>
+    </section>
+
+    <section class="lesson-block">
+      <h2><span data-l="en">Follow one order</span><span data-l="vi">Theo chân một đơn hàng</span></h2>
+      <div class="scene scene--stack" data-scene data-step="4">
+        <div class="dark-panel scene-stage on-dark">
+          <svg class="scene-svg" viewBox="0 0 880 486" role="img" aria-label="The box mascot follows an order through four stops: order placed, pick and pack, on the road and delivered." data-aria-vi="Linh vật kiện hàng theo một đơn hàng qua bốn chặng: nhận đơn, lấy và đóng gói, trên đường giao và đã giao.">
+            <text class="lbl" x="100" y="70" data-l="en">Order placed</text><text class="lbl" x="100" y="70" data-l="vi">Nhận đơn</text>
+            <text class="lbl" x="327" y="70" data-l="en">Pick &amp; pack</text><text class="lbl" x="327" y="70" data-l="vi">Đóng gói</text>
+            <text class="lbl" x="553" y="70" data-l="en">On the road</text><text class="lbl" x="553" y="70" data-l="vi">Đang giao</text>
+            <text class="lbl" x="780" y="70" data-l="en">Delivered</text><text class="lbl" x="780" y="70" data-l="vi">Đã giao</text>
+
+            <path class="road-base" d="M100 212L327 282L553 212L780 282"/>
+            <path class="road-done" pathLength="100" d="M100 212L327 282L553 212L780 282"/>
+
+            <g class="fade" data-from="1"><path class="tie" d="M100 252V352"/><rect class="tile" x="10" y="352" width="180" height="124" rx="12"/><use class="tile-icon" href="#i-store" x="78" y="364" width="44" height="44"/><text class="lbl" x="100" y="454" data-l="en">Customer</text><text class="lbl" x="100" y="454" data-l="vi">Khách</text></g>
+            <g class="fade" data-from="2"><path class="tie" d="M327 322V352"/><rect class="tile" x="237" y="352" width="180" height="124" rx="12"/><use class="tile-icon" href="#i-box" x="305" y="364" width="44" height="44"/><text class="lbl" x="327" y="454" data-l="en">Warehouse</text><text class="lbl" x="327" y="454" data-l="vi">Kho hàng</text></g>
+            <g class="fade" data-from="3"><path class="tie" d="M553 252V352"/><rect class="tile" x="463" y="352" width="180" height="124" rx="12"/><use class="tile-icon" href="#i-truck" x="531" y="364" width="44" height="44"/><text class="lbl" x="553" y="454" data-l="en">Carrier</text><text class="lbl" x="553" y="454" data-l="vi">Hãng giao</text></g>
+            <g class="fade" data-from="4"><path class="tie" d="M780 322V352"/><rect class="tile tile--done" x="690" y="352" width="180" height="124" rx="12"/><use class="tile-icon tile-icon--done" href="#i-check" x="758" y="364" width="44" height="44"/><text class="lbl tile-text--done" x="780" y="454" data-l="en">Doorstep</text><text class="lbl tile-text--done" x="780" y="454" data-l="vi">Tận nhà</text></g>
+
+            <g class="node" data-from="1"><circle cx="100" cy="212" r="38"/><use href="#i-clipboard" x="79" y="191" width="42" height="42"/></g>
+            <g class="node" data-from="2"><circle cx="327" cy="282" r="38"/><use href="#i-box" x="306" y="261" width="42" height="42"/></g>
+            <g class="node" data-from="3"><circle cx="553" cy="212" r="38"/><use href="#i-truck" x="532" y="191" width="42" height="42"/></g>
+            <g class="node" data-from="4"><circle cx="780" cy="282" r="38"/><use href="#i-check" x="759" y="261" width="42" height="42"/></g>
+
+            <g class="mover" data-mover="100,212 327,282 553,212 780,282" style="transform: translate(780px, 282px)">
+              <g class="hop">
+                <path d="M-14 -44v5M14 -44v5" stroke="#F1E8D6" stroke-width="5" stroke-linecap="round"/>
+                <rect x="-31" y="-98" width="62" height="54" rx="5" fill="#E8A91E"/>
+                <rect x="-7" y="-98" width="14" height="19" fill="#F1E8D6"/>
+                <circle cx="-12" cy="-65" r="3.6" fill="#0C1A12"/><circle cx="12" cy="-65" r="3.6" fill="#0C1A12"/>
+                <path d="M-6 -58q6 5 12 0" fill="none" stroke="#0C1A12" stroke-width="3" stroke-linecap="round"/>
+              </g>
+            </g>
+          </svg>
+          <div class="scene-foot">
+            <button class="replay" type="button"><svg class="icon" aria-hidden="true"><use href="#i-replay"/></svg><span data-l="en">Replay</span><span data-l="vi">Xem lại từ đầu</span></button>
+          </div>
+        </div>
+        <ol class="step-list">
+          <li><button class="step-btn" type="button"><span class="step-num">01</span><span data-l="en"><strong>Order placed</strong><span>The customer clicks buy, and the system assigns the order to a location that has stock.</span></span><span data-l="vi"><strong>Nhận đơn</strong><span>Khách bấm mua, hệ thống giao đơn cho nơi còn hàng.</span></span></button></li>
+          <li><button class="step-btn" type="button"><span class="step-num">02</span><span data-l="en"><strong>Pick and pack</strong><span>Someone finds the item on a shelf, packs it and adds a label.</span></span><span data-l="vi"><strong>Lấy và đóng gói</strong><span>Nhân viên lấy hàng từ kệ, đóng gói và dán nhãn.</span></span></button></li>
+          <li><button class="step-btn" type="button"><span class="step-num">03</span><span data-l="en"><strong>On the road</strong><span>A carrier moves the parcel through sorting centres toward the customer.</span></span><span data-l="vi"><strong>Trên đường giao</strong><span>Hãng vận chuyển đưa kiện hàng qua các trung tâm phân loại đến gần khách.</span></span></button></li>
+          <li><button class="step-btn" type="button"><span class="step-num">04</span><span data-l="en"><strong>Delivered</strong><span>The parcel arrives. Questions and returns can still follow.</span></span><span data-l="vi"><strong>Đã giao</strong><span>Kiện hàng đến nơi. Sau đó vẫn có thể có câu hỏi hoặc trả hàng.</span></span></button></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lesson-block">
+      <h2><span data-l="en">Notes: who does the work?</span><span data-l="vi">Ghi chú: ai làm phần việc này?</span></h2>
+      <p data-l="en">Imagine a made-up shop that sells yoga mats on Amazon. The customer sees one simple click, but the shop still has to decide who stores the mats and who ships them. There are three common answers.</p>
+      <p data-l="vi">Hãy tưởng tượng một gian hàng giả định bán thảm yoga trên Amazon. Khách chỉ thấy một cú bấm đơn giản, nhưng gian hàng vẫn phải quyết định ai giữ hàng và ai giao hàng. Có ba cách phổ biến.</p>
+      <p data-l="en"><strong>FBA (Fulfillment by Amazon):</strong> the shop sends stock to Amazon. Amazon stores it, picks and packs each order, ships it, and handles customer service and returns. In exchange, the shop pays fees and has less control.</p>
+      <p data-l="vi"><strong>FBA (Fulfillment by Amazon):</strong> gian hàng gửi hàng vào kho Amazon. Amazon giữ hàng, đóng gói từng đơn, giao hàng, đồng thời xử lý chăm sóc khách và trả hàng. Đổi lại, gian hàng trả phí và có ít quyền kiểm soát hơn.</p>
+      <p data-l="en"><strong>FBM (Fulfillment by Merchant):</strong> the shop keeps the stock and ships each order itself. It has more control, but also has to meet Amazon's delivery standards on its own.</p>
+      <p data-l="vi"><strong>FBM (Fulfillment by Merchant):</strong> gian hàng tự giữ hàng và tự giao từng đơn. Gian hàng kiểm soát nhiều hơn, nhưng cũng phải tự đáp ứng tiêu chuẩn giao hàng của Amazon.</p>
+      <p data-l="en"><strong>3PL (third-party logistics):</strong> the shop pays a separate warehouse company to store and ship for it. Sellers often use a 3PL to hold extra stock or to serve more than one sales channel.</p>
+      <p data-l="vi"><strong>3PL (third-party logistics):</strong> gian hàng thuê một công ty kho vận bên ngoài giữ hàng và giao hàng. Người bán thường dùng 3PL để chứa hàng dự phòng hoặc phục vụ nhiều kênh bán.</p>
+      <p data-l="en">There's no single right answer. It depends on the product, the volume and how much control the shop wants. Amazon's programs and fees change often, so always check the current rules in Seller Central.</p>
+      <p data-l="vi">Không có một đáp án đúng cho mọi trường hợp. Lựa chọn tuỳ vào sản phẩm, sản lượng và mức kiểm soát gian hàng muốn có. Chương trình và phí của Amazon thay đổi thường xuyên, nên hãy luôn kiểm tra quy định mới nhất trong Seller Central.</p>
+    </section>
+
+    <section class="lesson-block">
+      <h2><span data-l="en">Practice task</span><span data-l="vi">Bài thực hành</span></h2>
+      <p data-l="en">This takes about ten minutes, and you don't need a seller account.</p>
+      <p data-l="vi">Bài này mất khoảng mười phút và bạn không cần tài khoản người bán.</p>
+      <ol class="steps-text" style="margin-top:14px">
+        <li><span data-l="en">Open three product pages on Amazon.com from different sellers.</span><span data-l="vi">Mở ba trang sản phẩm trên Amazon.com của các người bán khác nhau.</span></li>
+        <li><span data-l="en">In the buying box, find the "Ships from" and "Sold by" lines.</span><span data-l="vi">Trong khung mua hàng, tìm hai dòng "Ships from" và "Sold by".</span></li>
+        <li><span data-l="en">Note how each product is fulfilled: "Ships from Amazon" with another seller usually means FBA, while the seller's own name on both lines usually means FBM.</span><span data-l="vi">Ghi lại cách mỗi sản phẩm được giao: "Ships from Amazon" cùng một người bán khác thường là FBA, còn tên người bán ở cả hai dòng thường là FBM.</span></li>
+        <li><span data-l="en">Compare the delivery dates. What pattern do you notice?</span><span data-l="vi">So sánh ngày giao hàng. Bạn nhận ra điều gì?</span></li>
+      </ol>
+    </section>
+
+    <div class="lesson-actions">
+      <a class="btn btn--secondary" href="course.html"><span data-l="en">Back to the course</span><span data-l="vi">Quay lại khoá học</span></a>
+      <span class="stamp stamp--success done-state"><span data-l="en">Delivered</span><span data-l="vi">Đã giao</span></span>
+      <button class="btn btn--primary" type="button" data-toggle-done="sample"><span data-l="en">Mark as delivered / undo</span><span data-l="vi">Đánh dấu đã giao / hoàn tác</span></button>
+    </div>
+  </div>
+</main>
+
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html" aria-label="Ecom Lab home" data-aria-vi="Trang chủ Ecom Lab"><span class="logo-mark" aria-hidden="true">EL</span>Ecom Lab</a>
+        <p data-l="en">Learn what happens behind every order.</p>
+        <p data-l="vi">Học những gì diễn ra phía sau mỗi đơn hàng.</p>
+      </div>
+      <div class="footer-links">
+        <h2><span data-l="en">Explore</span><span data-l="vi">Khám phá</span></h2>
+        <a href="about.html"><span data-l="en">About</span><span data-l="vi">Về mình</span></a>
+        <a href="course.html"><span data-l="en">Free course</span><span data-l="vi">Khoá miễn phí</span></a>
+      </div>
+      <div class="footer-links">
+        <h2><span data-l="en">Connect</span><span data-l="vi">Kết nối</span></h2>
+        <a href="https://www.linkedin.com/in/hungvo1803" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/hungvo1803-svg" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <p class="footer-note"><span>© 2026 Hung Vo · Ecom Lab. </span><span data-l="en">Views here are my own and do not represent any employer. Marketplace names belong to their owners; Ecom Lab is not affiliated with them.</span><span data-l="vi">Mọi quan điểm ở đây là của riêng mình, không đại diện cho công ty nào. Tên các sàn thuộc về chủ sở hữu của họ; Ecom Lab không liên kết với các sàn này.</span></p>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
