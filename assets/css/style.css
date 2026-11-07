@@ -432,6 +432,9 @@ a.module-row:hover { background: var(--surface); }
 @media (max-width: 400px) {
   .site-header .logo { font-size: 0; gap: 0; }
 }
+@media (max-width: 359px) {
+  .nav a { white-space: normal; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
