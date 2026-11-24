@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="vi" data-lang="vi" data-title-en="3.3 Stress test and decide | Ecom LAB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3.3 Thử kịch bản xấu và ra quyết định | Ecom LAB</title>
+<meta name="description" content="Bài 3, phần 3.3 khoá miễn phí của Ecom LAB: ba kịch bản, thử từng giả định, điểm hoà vốn, quy tắc go/no-go và một trang quyết định.">
+<script>(function(){var l='vi';try{l=localStorage.getItem('ecomlab-lang')||'vi'}catch(e){}if(l!=='en')l='vi';var h=document.documentElement;h.lang=l;h.dataset.lang=l;h.classList.add('js')})();</script>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#content"><span data-l="en">Skip to main content</span><span data-l="vi">Đi tới nội dung chính</span></a>
+
+<header class="site-header on-dark">
+  <div class="container">
+    <a class="logo" href="index.html" aria-label="Ecom LAB home" data-aria-vi="Trang chủ Ecom LAB"><span class="logo-mark" aria-hidden="true">EL</span>Ecom LAB</a>
+    <nav class="nav" aria-label="Main" data-aria-vi="Điều hướng chính">
+      <a href="course.html" aria-current="page">Free courses</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language" data-aria-vi="Ngôn ngữ">
+      <button type="button" data-set-lang="vi">VI</button>
+      <button type="button" data-set-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="lesson-shell" data-agenda="3-3">
+  <div class="lesson-main">
+    <article class="lesson-inner" id="content" data-lesson="3-3">
+      <header class="part-head">
+        <p class="eyebrow"><span data-l="en">Lesson 3 · Part 3.3 · 10 min</span><span data-l="vi">Bài 3 · Phần 3.3 · 10 phút</span></p>
+        <h1><span data-l="en">Stress test and decide</span><span data-l="vi">Thử kịch bản xấu và ra quyết định</span></h1>
+        <p class="lead" data-l="en">See how fragile the profit is, then write a one-page go, stop or rework decision.</p>
+        <p class="lead" data-l="vi">Xem lợi nhuận mong manh tới đâu, rồi viết một trang quyết định go, stop hay rework.</p>
+      </header>
+
+      <section class="part-section">
+        <p class="draft-note"><span data-l="en">Draft: Hung still needs to review this content. The video is coming soon.</span><span data-l="vi">Bản nháp: Hùng vẫn cần duyệt lại nội dung. Video sắp ra mắt.</span></p>
+        <!-- VIDEO: paste a YouTube link inside data-youtube="" and the video replaces this slot. -->
+        <div class="video on-dark" data-youtube="" data-video-title="Stress test and decide">
+          <div>
+            <svg class="icon" aria-hidden="true"><use href="#i-live"/></svg>
+            <strong><span data-l="en">Video coming soon</span><span data-l="vi">Video sắp ra mắt</span></strong>
+            <p data-l="en">The notes below cover this part in the meantime.</p>
+            <p data-l="vi">Trong lúc chờ, bạn có thể đọc ghi chú bên dưới.</p>
+          </div>
+        </div>
+      </section>
+
+      <div data-sim-stress>
+      <p class="sim-note" data-sim-who hidden><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg><span data-l="en">This page uses the numbers you typed in Part 3.2.</span><span data-l="vi">Trang này dùng số bạn đã nhập ở phần 3.2.</span></p>
+
+      <!-- ========== Three scenarios ========== -->
+      <section class="part-section">
+        <p class="eyebrow"><span data-l="en">Three scenarios</span><span data-l="vi">Ba kịch bản</span></p>
+        <h2><span data-l="en">Expected, bad <span class="mark">and good</span></span><span data-l="vi">Dự kiến, xấu <span class="mark">và tốt</span></span></h2>
+        <div class="scn" data-reveal>
+          <div class="scn-col is-bad r" style="--i:0"><p class="scn-h"><span data-l="en">Bad</span><span data-l="vi">Xấu</span></p><p class="scn-how"><span data-l="en">Price −5%, ads ×1.5, sales −30%</span><span data-l="vi">Giá −5%, quảng cáo ×1,5, doanh số −30%</span></p><dl><div><dt><span data-l="en">Profit/unit</span><span data-l="vi">Lãi/chiếc</span></dt><dd data-sc="bad-unit"></dd></div><div><dt><span data-l="en">Margin</span><span data-l="vi">Tỷ suất</span></dt><dd data-sc="bad-margin"></dd></div><div><dt>ROI</dt><dd data-sc="bad-roi"></dd></div><div><dt><span data-l="en">Payback</span><span data-l="vi">Hoàn vốn</span></dt><dd data-sc="bad-payback"></dd></div></dl></div>
+          <div class="scn-col is-exp r" style="--i:1"><p class="scn-h"><span data-l="en">Expected</span><span data-l="vi">Dự kiến</span></p><p class="scn-how"><span data-l="en">Your plan from Part 3.2</span><span data-l="vi">Kế hoạch ở phần 3.2</span></p><dl><div><dt><span data-l="en">Profit/unit</span><span data-l="vi">Lãi/chiếc</span></dt><dd data-sc="expected-unit"></dd></div><div><dt><span data-l="en">Margin</span><span data-l="vi">Tỷ suất</span></dt><dd data-sc="expected-margin"></dd></div><div><dt>ROI</dt><dd data-sc="expected-roi"></dd></div><div><dt><span data-l="en">Payback</span><span data-l="vi">Hoàn vốn</span></dt><dd data-sc="expected-payback"></dd></div></dl></div>
+          <div class="scn-col is-good r" style="--i:2"><p class="scn-h"><span data-l="en">Good</span><span data-l="vi">Tốt</span></p><p class="scn-how"><span data-l="en">Ads −2 points, sales +20%</span><span data-l="vi">Quảng cáo −2 điểm, doanh số +20%</span></p><dl><div><dt><span data-l="en">Profit/unit</span><span data-l="vi">Lãi/chiếc</span></dt><dd data-sc="good-unit"></dd></div><div><dt><span data-l="en">Margin</span><span data-l="vi">Tỷ suất</span></dt><dd data-sc="good-margin"></dd></div><div><dt>ROI</dt><dd data-sc="good-roi"></dd></div><div><dt><span data-l="en">Payback</span><span data-l="vi">Hoàn vốn</span></dt><dd data-sc="good-payback"></dd></div></dl></div>
+        </div>
+      </section>
+
+      <!-- ========== What-if tests ========== -->
+      <section class="part-section">
+        <p class="eyebrow"><span data-l="en">What-if tests</span><span data-l="vi">Thử từng giả định</span></p>
+        <h2><span data-l="en">Which assumption <span class="mark">moves profit most?</span></span><span data-l="vi">Giả định nào <span class="mark">ảnh hưởng lợi nhuận nhiều nhất?</span></span></h2>
+        <div class="v-card" data-reveal>
+          <p class="v-card-title"><span data-l="en">Drop in ROI on the first order, one change at a time</span><span data-l="vi">ROI của lô đầu giảm bao nhiêu, mỗi lần đổi một giả định</span><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></p>
+          <ol class="wi">
+            <li data-wi="ads"><span class="wi-l"><span data-l="en">Ad cost doubles</span><span data-l="vi">Chi phí QC gấp đôi</span></span><span class="wi-track"><i></i></span><span class="wi-out" data-wi-out></span></li>
+            <li data-wi="price"><span class="wi-l"><span data-l="en">Price cut 10%</span><span data-l="vi">Giảm giá 10%</span></span><span class="wi-track"><i></i></span><span class="wi-out" data-wi-out></span></li>
+            <li data-wi="returns"><span class="wi-l"><span data-l="en">Returns double</span><span data-l="vi">Hoàn hàng gấp đôi</span></span><span class="wi-track"><i></i></span><span class="wi-out" data-wi-out></span></li>
+            <li data-wi="freight"><span class="wi-l"><span data-l="en">Freight +50%</span><span data-l="vi">Cước +50%</span></span><span class="wi-track"><i></i></span><span class="wi-out" data-wi-out></span></li>
+            <li data-wi="sales"><span class="wi-l"><span data-l="en">Sales halve</span><span data-l="vi">Doanh số giảm một nửa</span></span><span class="wi-track"><i></i></span><span class="wi-out" data-wi-out></span></li>
+          </ol>
+          <p class="fig-note"><span data-l="en">The longest bar is the assumption to research before you spend any money. "Sales halve" keeps profit per unit, but stretches the payback.</span><span data-l="vi">Thanh dài nhất là giả định cần nghiên cứu kỹ trước khi chi tiền. "Doanh số giảm một nửa" không đổi lợi nhuận mỗi chiếc, nhưng kéo dài thời gian hoàn vốn.</span></p>
+        </div>
+
+        <div class="be" data-reveal>
+          <div class="be-card r" style="--i:0"><small><span data-l="en">Break-even price</span><span data-l="vi">Giá hoà vốn</span></small><b data-be="price"></b><p><span data-l="en">Below this, each sale loses money. Today's price:</span><span data-l="vi">Thấp hơn mức này, mỗi đơn đều lỗ. Giá hiện tại:</span> <span data-be="base"></span></p></div>
+          <div class="be-card r" style="--i:1"><small><span data-l="en">Units to cover one-off costs</span><span data-l="vi">Số chiếc để bù chi phí một lần</span></small><b data-be="units"></b><p><span data-l="en">Sales needed before the first order makes any profit at all.</span><span data-l="vi">Số đơn cần bán trước khi lô đầu có đồng lãi nào.</span></p></div>
+        </div>
+      </section>
+
+      <!-- ========== Go / no-go rules ========== -->
+      <section class="part-section">
+        <p class="eyebrow"><span data-l="en">Your rules</span><span data-l="vi">Quy tắc của bạn</span></p>
+        <h2><span data-l="en">Set the pass mark <span class="mark">before you look</span></span><span data-l="vi">Đặt ngưỡng đạt <span class="mark">trước khi xem kết quả</span></span></h2>
+        <div class="rules" data-rules data-reveal>
+          <div class="rule" data-rule="margin"><span class="rule-ico"></span><span class="rule-l"><span data-l="en">Margin at least</span><span data-l="vi">Tỷ suất tối thiểu</span></span><label class="rule-in"><input type="number" value="15" step="1" min="0" inputmode="numeric"><span>%</span></label><span class="rule-now" data-now></span></div>
+          <div class="rule" data-rule="roi"><span class="rule-ico"></span><span class="rule-l"><span data-l="en">ROI on first order at least</span><span data-l="vi">ROI lô đầu tối thiểu</span></span><label class="rule-in"><input type="number" value="30" step="1" min="0" inputmode="numeric"><span>%</span></label><span class="rule-now" data-now></span></div>
+          <div class="rule" data-rule="payback"><span class="rule-ico"></span><span class="rule-l"><span data-l="en">Payback within</span><span data-l="vi">Hoàn vốn trong vòng</span></span><label class="rule-in"><input type="number" value="6" step="1" min="1" inputmode="numeric"><span><span data-l="en">mo</span><span data-l="vi">th</span></span></label><span class="rule-now" data-now></span></div>
+          <div class="rule" data-rule="bad"><span class="rule-ico"></span><span class="rule-l"><span data-l="en">Bad case profit/unit at least</span><span data-l="vi">Lãi/chiếc ở kịch bản xấu tối thiểu</span></span><label class="rule-in"><span>$</span><input type="number" value="0.50" step="0.1" min="0" inputmode="decimal"></label><span class="rule-now" data-now></span></div>
+          <p class="rule-verdict" data-verdict></p>
+        </div>
+        <p class="fig-note"><span data-l="en">Example rules for the pet bowl. Change them to your own: the verdict updates as you type.</span><span data-l="vi">Quy tắc ví dụ cho chiếc bát. Hãy đổi thành quy tắc của bạn: kết luận cập nhật ngay khi bạn gõ.</span></p>
+      </section>
+      </div>
+
+      <!-- ========== One-page decision ========== -->
+      <section class="part-section">
+        <p class="eyebrow"><span data-l="en">Write it down</span><span data-l="vi">Ghi lại</span></p>
+        <h2><span data-l="en">The one-page <span class="mark">decision</span></span><span data-l="vi">Một trang <span class="mark">quyết định</span></span></h2>
+        <div class="dec" data-reveal>
+          <p class="dec-head"><span data-l="en">Decision · Leak-proof travel bowl</span><span data-l="vi">Quyết định · Bát du lịch chống rò</span><span class="dec-stamp">GO</span></p>
+          <div class="dec-grid">
+            <div class="r" style="--i:0"><h3><span data-l="en">The idea</span><span data-l="vi">Ý tưởng</span></h3><p><span data-l="en">Collapsible travel bowl with a non-tip base and a leak-proof lid, for dog owners who hike. Rated "Better".</span><span data-l="vi">Bát du lịch gấp gọn có đế chống đổ và nắp chống rò, cho người nuôi chó hay leo núi. Mức "Tốt hơn".</span></p></div>
+            <div class="r" style="--i:1"><h3><span data-l="en">The numbers</span><span data-l="vi">Các con số</span></h3><p><span data-l="en">$14.99 · profit $2.79 (19%) · cash $5,600 · ROI 32% · payback month 4.</span><span data-l="vi">$14.99 · lãi $2.79 (19%) · vốn $5.600 · ROI 32% · hoàn vốn tháng 4.</span></p></div>
+            <div class="r" style="--i:2"><h3><span data-l="en">Biggest risks</span><span data-l="vi">Rủi ro lớn nhất</span></h3><p><span data-l="en">Ad cost: if it doubles, ROI falls to about 5%. Then a price war.</span><span data-l="vi">Chi phí quảng cáo: nếu gấp đôi, ROI rớt còn khoảng 5%. Kế đó là chiến tranh giá.</span></p></div>
+            <div class="r" style="--i:3"><h3><span data-l="en">Decision</span><span data-l="vi">Quyết định</span></h3><p><span data-l="en"><strong>Go</strong>, but keep the first order at the 1,000 minimum, not 3,000 for a lower price.</span><span data-l="vi"><strong>Go</strong>, nhưng giữ lô đầu ở mức tối thiểu 1.000 chiếc, không đặt 3.000 chiếc để lấy giá rẻ hơn.</span></p></div>
+            <div class="r dec-wide" style="--i:4"><h3><span data-l="en">Next step</span><span data-l="vi">Bước tiếp theo</span></h3><p><span data-l="en">Order samples from supplier B. Before launch, invest in the main image and A+ content so ads convert better and ad cost falls.</span><span data-l="vi">Đặt mẫu với nhà cung cấp B. Trước khi ra mắt, đầu tư vào ảnh chính và nội dung A+ để quảng cáo chuyển đổi tốt hơn và chi phí quảng cáo giảm.</span></p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== Final project with AI ========== -->
+      <section class="part-section">
+        <p class="eyebrow"><span data-l="en">Final project</span><span data-l="vi">Dự án cuối khoá</span></p>
+        <h2><span data-l="en">Your own go/no-go <span class="mark">with AI</span></span><span data-l="vi">Quyết định go/no-go của riêng bạn <span class="mark">cùng AI</span></span></h2>
+        <div class="practice">
+          <p data-l="en">About forty-five minutes. Use your numbers from Part 3.2 and the results on this page.</p>
+          <p data-l="vi">Khoảng bốn mươi lăm phút. Dùng số của bạn ở phần 3.2 và kết quả trên trang này.</p>
+          <ol class="ai-steps">
+            <li>
+              <p class="ai-step-title"><span data-l="en">Find your weakest assumption</span><span data-l="vi">Tìm giả định yếu nhất</span></p>
+              <div class="prompt-box">
+                <pre data-l="en">Here are my simulation results: expected [numbers], bad [numbers], good [numbers], and the what-if test that hurt most: [test]. Explain in plain words why that assumption matters so much for my product, and give me three practical ways to research or reduce that risk before I order.</pre>
+                <pre data-l="vi">Đây là kết quả mô phỏng của tôi: dự kiến [số liệu], xấu [số liệu], tốt [số liệu], và phép thử gây ảnh hưởng nặng nhất: [phép thử]. Hãy giải thích bằng lời đơn giản vì sao giả định đó quan trọng với sản phẩm của tôi, và cho tôi ba cách thực tế để nghiên cứu hoặc giảm rủi ro đó trước khi đặt hàng.</pre>
+                <button class="prompt-copy" type="button"><span data-l="en">Copy</span><span data-l="vi">Sao chép</span></button>
+              </div>
+            </li>
+            <li>
+              <p class="ai-step-title"><span data-l="en">Write the one-page decision</span><span data-l="vi">Viết trang quyết định</span></p>
+              <div class="prompt-box">
+                <pre data-l="en">Write a one-page go/no-go decision for my product with five short sections: the idea, the numbers, the biggest risks, the decision (go, stop or rework) and the next step. My rules were: [your rules]. Results: [which rules passed]. Be honest: if a rule failed, the decision can't simply be go.</pre>
+                <pre data-l="vi">Hãy viết một trang quyết định go/no-go cho sản phẩm của tôi với năm phần ngắn: ý tưởng, các con số, rủi ro lớn nhất, quyết định (go, stop hay rework) và bước tiếp theo. Quy tắc của tôi là: [quy tắc của bạn]. Kết quả: [quy tắc nào đạt]. Hãy trung thực: nếu có quy tắc không đạt, quyết định không thể chỉ đơn giản là go.</pre>
+                <button class="prompt-copy" type="button"><span data-l="en">Copy</span><span data-l="vi">Sao chép</span></button>
+              </div>
+            </li>
+          </ol>
+          <div class="ai-reflect">
+            <p class="ai-step-title"><span data-l="en">You've finished the course</span><span data-l="vi">Bạn đã hoàn thành khoá học</span></p>
+            <p data-l="en">From a product idea to a written decision backed by real numbers. Whatever it says, go, stop or rework, you made it with your eyes open.</p>
+            <p data-l="vi">Từ một ý tưởng sản phẩm tới một quyết định bằng văn bản dựa trên con số thật. Dù kết quả là go, stop hay rework, bạn đã quyết định với đầy đủ thông tin.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="lesson-actions">
+        <span class="stamp stamp--success done-state"><span data-l="en">Delivered</span><span data-l="vi">Đã giao</span></span>
+        <button class="btn btn--primary" type="button" data-toggle-done="3-3"><span data-l="en">Mark as delivered / undo</span><span data-l="vi">Đánh dấu đã giao / hoàn tác</span></button>
+      </div>
+      <nav class="part-nav" aria-label="Parts" data-aria-vi="Các phần">
+        <a href="lesson-3-2.html"><span class="eyebrow"><span data-l="en">&larr; Previous</span><span data-l="vi">&larr; Phần trước</span></span><strong><span data-l="en">3.2 Build your simulation</span><span data-l="vi">3.2 Dựng bảng mô phỏng của bạn</span></strong></a>
+        <a class="next" href="course.html"><span class="eyebrow"><span data-l="en">Course complete</span><span data-l="vi">Hoàn thành khoá học</span></span><strong><span data-l="en">Back to the course &rarr;</span><span data-l="vi">Về trang khoá học &rarr;</span></strong></a>
+      </nav>
+    </article>
+  </div>
+</main>
+
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html" aria-label="Ecom LAB home" data-aria-vi="Trang chủ Ecom LAB"><span class="logo-mark" aria-hidden="true">EL</span>Ecom LAB</a>
+        <p data-l="en">What happens behind every order.</p>
+        <p data-l="vi">Điều gì diễn ra phía sau mỗi đơn hàng.</p>
+      </div>
+      <div class="footer-links">
+        <h2><span data-l="en">Explore</span><span data-l="vi">Khám phá</span></h2>
+        <a href="course.html">Free courses</a>
+      </div>
+      <div class="footer-links">
+        <h2><span data-l="en">Connect</span><span data-l="vi">Kết nối</span></h2>
+        <a href="https://www.linkedin.com/in/hungvo1803" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/ecomlab-hungvo" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <p class="footer-note"><span>© 2026 Hùng Võ · Ecom LAB. </span><span data-l="en">Disclaimer: Views are my own, not any employer's. Ecom LAB is not affiliated with any marketplace. Content is for education only and is not professional advice.</span><span data-l="vi">Miễn trừ trách nhiệm: Quan điểm là của riêng mình, không đại diện cho công ty nào. Ecom LAB không liên kết với sàn nào. Nội dung chỉ nhằm mục đích học tập, không phải tư vấn chuyên môn.</span></p>
+  </div>
+</footer>
+<script src="assets/js/agenda.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/sim.js"></script>
+</body>
+</html>

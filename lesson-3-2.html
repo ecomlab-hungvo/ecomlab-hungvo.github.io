@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="vi" data-lang="vi" data-title-en="3.2 Build your simulation | Ecom LAB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3.2 Dựng bảng mô phỏng của bạn | Ecom LAB</title>
+<meta name="description" content="Bài 3, phần 3.2 khoá miễn phí của Ecom LAB: bảng mô phỏng lợi nhuận tương tác, tính lợi nhuận mỗi chiếc, vốn cần có, thời gian hoàn vốn và ROI.">
+<script>(function(){var l='vi';try{l=localStorage.getItem('ecomlab-lang')||'vi'}catch(e){}if(l!=='en')l='vi';var h=document.documentElement;h.lang=l;h.dataset.lang=l;h.classList.add('js')})();</script>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#content"><span data-l="en">Skip to main content</span><span data-l="vi">Đi tới nội dung chính</span></a>
+
+<header class="site-header on-dark">
+  <div class="container">
+    <a class="logo" href="index.html" aria-label="Ecom LAB home" data-aria-vi="Trang chủ Ecom LAB"><span class="logo-mark" aria-hidden="true">EL</span>Ecom LAB</a>
+    <nav class="nav" aria-label="Main" data-aria-vi="Điều hướng chính">
+      <a href="course.html" aria-current="page">Free courses</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language" data-aria-vi="Ngôn ngữ">
+      <button type="button" data-set-lang="vi">VI</button>
+      <button type="button" data-set-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="lesson-shell" data-agenda="3-2">
+  <div class="lesson-main">
+    <article class="lesson-inner" id="content" data-lesson="3-2">
+      <header class="part-head">
+        <p class="eyebrow"><span data-l="en">Lesson 3 · Part 3.2 · 12 min</span><span data-l="vi">Bài 3 · Phần 3.2 · 12 phút</span></p>
+        <h1><span data-l="en">Build your simulation</span><span data-l="vi">Dựng bảng mô phỏng của bạn</span></h1>
+        <p class="lead" data-l="en">Type your numbers into the simulator below and read the results: profit per unit, cash needed, payback and ROI.</p>
+        <p class="lead" data-l="vi">Nhập số của bạn vào bảng mô phỏng bên dưới và đọc kết quả: lợi nhuận mỗi chiếc, vốn cần có, thời gian hoàn vốn và ROI.</p>
+      </header>
+
+      <section class="part-section">
+        <p class="draft-note"><span data-l="en">Draft: Hung still needs to review this content. The video is coming soon.</span><span data-l="vi">Bản nháp: Hùng vẫn cần duyệt lại nội dung. Video sắp ra mắt.</span></p>
+        <!-- VIDEO: paste a YouTube link inside data-youtube="" and the video replaces this slot. -->
+        <div class="video on-dark" data-youtube="" data-video-title="Build your simulation">
+          <div>
+            <svg class="icon" aria-hidden="true"><use href="#i-live"/></svg>
+            <strong><span data-l="en">Video coming soon</span><span data-l="vi">Video sắp ra mắt</span></strong>
+            <p data-l="en">The notes below cover this part in the meantime.</p>
+            <p data-l="vi">Trong lúc chờ, bạn có thể đọc ghi chú bên dưới.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== Honest sales forecast ========== -->
+      <section class="part-section">
+        <p class="eyebrow"><span data-l="en">Before you type</span><span data-l="vi">Trước khi nhập số</span></p>
+        <h2><span data-l="en">Forecast sales <span class="mark">honestly</span></span><span data-l="vi">Dự báo doanh số <span class="mark">một cách trung thực</span></span></h2>
+        <ol class="fc" data-reveal>
+          <li class="r" style="--i:0"><span class="fc-n">1</span><b>9,000</b><span data-l="en">units a month sold by the top 10 (Part 2.1)</span><span data-l="vi">đơn mỗi tháng của top 10 (phần 2.1)</span></li>
+          <li class="fc-op r" style="--i:1">&times;</li>
+          <li class="r" style="--i:2"><span class="fc-n">2</span><b>~3%</b><span data-l="en">a modest share for a newcomer</span><span data-l="vi">một thị phần khiêm tốn cho người mới</span></li>
+          <li class="fc-op r" style="--i:3">=</li>
+          <li class="is-hot r" style="--i:4"><span class="fc-n">3</span><b>~300</b><span data-l="en">units a month, reached by month 3</span><span data-l="vi">đơn mỗi tháng, đạt được vào tháng 3</span></li>
+        </ol>
+        <p class="v-caption"><span data-l="en">Start lower while reviews are few: 150, then 250, then 300.</span><span data-l="vi">Bắt đầu thấp hơn khi còn ít đánh giá: 150, rồi 250, rồi 300.</span></p>
+      </section>
+
+      <!-- ========== The simulator ========== -->
+      <section class="part-section">
+        <p class="eyebrow"><span data-l="en">The simulator</span><span data-l="vi">Bảng mô phỏng</span></p>
+        <h2><span data-l="en">Blue in, <span class="mark">green out</span></span><span data-l="vi">Ô xanh dương để nhập, <span class="mark">ô xanh lá là kết quả</span></span></h2>
+        <div class="sim" data-sim-calc>
+          <p class="sim-note" data-sim-note hidden><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg><span data-l="en">You're using your own numbers. They're saved in this browser only.</span><span data-l="vi">Bạn đang dùng số của riêng mình. Số chỉ được lưu trong trình duyệt này.</span></p>
+          <div class="sim-grid">
+            <div class="sim-in">
+              <fieldset class="sim-fs">
+                <legend><span data-l="en">Price</span><span data-l="vi">Giá bán</span></legend>
+                <label><span data-l="en">Selling price</span><span data-l="vi">Giá bán</span><span class="sim-u">$</span><input type="number" step="0.01" min="0" data-k="price" inputmode="decimal"></label>
+              </fieldset>
+              <fieldset class="sim-fs gp1">
+                <legend><span data-l="en">Getting it to Amazon (per unit)</span><span data-l="vi">Đưa hàng tới Amazon (mỗi chiếc)</span></legend>
+                <label><span data-l="en">Product cost</span><span data-l="vi">Giá hàng</span><span class="sim-u">$</span><input type="number" step="0.01" min="0" data-k="product" inputmode="decimal"></label>
+                <label><span data-l="en">Freight to US</span><span data-l="vi">Cước sang Mỹ</span><span class="sim-u">$</span><input type="number" step="0.01" min="0" data-k="freight" inputmode="decimal"></label>
+                <label><span data-l="en">Import duty</span><span data-l="vi">Thuế nhập khẩu</span><span class="sim-u">$</span><input type="number" step="0.01" min="0" data-k="duty" inputmode="decimal"></label>
+                <label><span data-l="en">Prep, inbound</span><span data-l="vi">Chuẩn bị, nhập kho</span><span class="sim-u">$</span><input type="number" step="0.01" min="0" data-k="prep" inputmode="decimal"></label>
+              </fieldset>
+              <fieldset class="sim-fs gp2">
+                <legend><span data-l="en">Amazon fees</span><span data-l="vi">Phí Amazon</span></legend>
+                <label><span data-l="en">Referral fee</span><span data-l="vi">Phí giới thiệu</span><span class="sim-u">%</span><input type="number" step="0.5" min="0" data-k="referral" inputmode="decimal"></label>
+                <label><span data-l="en">FBA fee</span><span data-l="vi">Phí FBA</span><span class="sim-u">$</span><input type="number" step="0.01" min="0" data-k="fba" inputmode="decimal"></label>
+                <label><span data-l="en">Storage</span><span data-l="vi">Lưu kho</span><span class="sim-u">$</span><input type="number" step="0.01" min="0" data-k="storage" inputmode="decimal"></label>
+              </fieldset>
+              <fieldset class="sim-fs gp3">
+                <legend><span data-l="en">Selling costs</span><span data-l="vi">Chi phí bán hàng</span></legend>
+                <label><span data-l="en">Advertising</span><span data-l="vi">Quảng cáo</span><span class="sim-u">%</span><input type="number" step="0.5" min="0" data-k="ads" inputmode="decimal"></label>
+                <label><span data-l="en">Returns, damage</span><span data-l="vi">Hoàn hàng, hư hỏng</span><span class="sim-u">%</span><input type="number" step="0.5" min="0" data-k="returns" inputmode="decimal"></label>
+              </fieldset>
+              <fieldset class="sim-fs">
+                <legend><span data-l="en">Order and plan</span><span data-l="vi">Lô hàng và kế hoạch</span></legend>
+                <label><span data-l="en">First order</span><span data-l="vi">Lô hàng đầu</span><span class="sim-u">pcs</span><input type="number" step="50" min="0" data-k="order" inputmode="numeric"></label>
+                <label><span data-l="en">One-off costs</span><span data-l="vi">Chi phí một lần</span><span class="sim-u">$</span><input type="number" step="50" min="0" data-k="oneoff" inputmode="numeric"></label>
+                <label><span data-l="en">Sales month 1</span><span data-l="vi">Bán tháng 1</span><span class="sim-u">pcs</span><input type="number" step="10" min="0" data-k="m1" inputmode="numeric"></label>
+                <label><span data-l="en">Sales month 2</span><span data-l="vi">Bán tháng 2</span><span class="sim-u">pcs</span><input type="number" step="10" min="0" data-k="m2" inputmode="numeric"></label>
+                <label><span data-l="en">Sales month 3</span><span data-l="vi">Bán tháng 3</span><span class="sim-u">pcs</span><input type="number" step="10" min="0" data-k="m3" inputmode="numeric"></label>
+                <label><span data-l="en">Month 4 onward</span><span data-l="vi">Từ tháng 4</span><span class="sim-u">pcs</span><input type="number" step="10" min="0" data-k="m4" inputmode="numeric"></label>
+              </fieldset>
+              <div class="sim-btns">
+                <button class="btn btn--secondary" type="button" data-sim-reset><svg class="icon" aria-hidden="true"><use href="#i-replay"/></svg><span data-l="en">Pet bowl example</span><span data-l="vi">Về ví dụ chiếc bát</span></button>
+                <button class="btn btn--primary" type="button" data-sim-csv><svg class="icon" aria-hidden="true"><use href="#i-sheet"/></svg><span data-l="en">Download for Excel / Sheets</span><span data-l="vi">Tải về Excel / Sheets</span></button>
+              </div>
+            </div>
+
+            <div class="sim-out">
+              <div class="so-unit">
+                <p class="so-h"><span data-l="en">Per unit</span><span data-l="vi">Mỗi chiếc</span></p>
+                <dl>
+                  <div><dt><i class="gp1"></i><span data-l="en">Getting it to Amazon</span><span data-l="vi">Đưa hàng tới Amazon</span></dt><dd data-out="landed"></dd></div>
+                  <div><dt><i class="gp2"></i><span data-l="en">Amazon fees</span><span data-l="vi">Phí Amazon</span></dt><dd data-out="amazon"></dd></div>
+                  <div><dt><i class="gp3"></i><span data-l="en">Selling costs</span><span data-l="vi">Chi phí bán hàng</span></dt><dd data-out="selling"></dd></div>
+                  <div class="so-total"><dt><span data-l="en">Total cost</span><span data-l="vi">Tổng chi phí</span></dt><dd data-out="total"></dd></div>
+                </dl>
+                <p class="so-profit"><span><span data-l="en">Profit per unit</span><span data-l="vi">Lợi nhuận mỗi chiếc</span></span><b data-out="unit"></b><em data-out="margin"></em></p>
+              </div>
+              <div class="so-kpi">
+                <div><small><span data-l="en">Cash needed</span><span data-l="vi">Vốn cần có</span></small><b data-out="invest"></b></div>
+                <div><small><span data-l="en">Profit, first order</span><span data-l="vi">Lãi lô đầu</span></small><b data-out="first"></b></div>
+                <div class="is-hot"><small>ROI</small><b data-out="roi"></b></div>
+                <div class="is-hot"><small><span data-l="en">Payback</span><span data-l="vi">Hoàn vốn</span></small><b data-out="payback"></b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sim-charts">
+            <div class="v-card">
+              <p class="v-card-title"><span data-l="en">Where each dollar goes</span><span data-l="vi">Mỗi đô đi đâu</span><svg class="icon" aria-hidden="true"><use href="#i-coin"/></svg></p>
+              <div class="wf wf--11" data-wf></div>
+            </div>
+            <div class="v-card v-card--dark on-dark">
+              <p class="v-card-title"><span data-l="en">Cumulative cash, month by month</span><span data-l="vi">Tiền mặt luỹ kế theo tháng</span><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></p>
+              <div class="cc" data-cash></div>
+              <p class="cc-note"><span data-l="en">Each unit sold brings back</span><span data-l="vi">Mỗi chiếc bán ra mang về</span> <b data-out="cashin"></b> <span data-l="en">after Amazon fees and selling costs.</span><span data-l="vi">sau phí Amazon và chi phí bán hàng.</span></p>
+            </div>
+          </div>
+        </div>
+        <details class="notes">
+          <summary><span data-l="en">Notes</span><span data-l="vi">Ghi chú</span></summary>
+          <p data-l="en">The simulator starts with the pet bowl. Change any blue box and every result updates. <strong>Cash needed</strong> is the first order at landed cost plus one-off costs. <strong>Payback</strong> is the month your cumulative cash turns positive. <strong>ROI</strong> is the profit on the first order divided by the cash you put in. "Download for Excel / Sheets" gives you a CSV file with your inputs and live formulas; open it in Excel, or import it into Google Sheets.</p>
+          <p data-l="vi">Bảng mô phỏng bắt đầu với chiếc bát. Đổi bất kỳ ô xanh dương nào, mọi kết quả sẽ cập nhật. <strong>Vốn cần có</strong> là lô hàng đầu tính theo giá vốn về tới kho cộng chi phí một lần. <strong>Hoàn vốn</strong> là tháng tiền mặt luỹ kế chuyển sang dương. <strong>ROI</strong> là lãi của lô đầu chia cho số tiền bạn bỏ vào. Nút "Tải về Excel / Sheets" cho bạn một file CSV chứa số của bạn và công thức tính sẵn; mở bằng Excel, hoặc nhập vào Google Sheets.</p>
+        </details>
+      </section>
+
+      <!-- ========== Practice with AI ========== -->
+      <section class="part-section">
+        <p class="eyebrow"><span data-l="en">Practice with AI</span><span data-l="vi">Thực hành cùng AI</span></p>
+        <h2><span data-l="en">Fill it in, then <span class="mark">let AI challenge it</span></span><span data-l="vi">Điền số, rồi <span class="mark">để AI phản biện</span></span></h2>
+        <div class="practice">
+          <p data-l="en">About twenty minutes. Use your cost list from Part 3.1.</p>
+          <p data-l="vi">Khoảng hai mươi phút. Dùng danh sách chi phí ở phần 3.1.</p>
+          <ol class="ai-steps">
+            <li>
+              <p class="ai-step-title"><span data-l="en">Fill in every blue box</span><span data-l="vi">Điền đủ mọi ô xanh dương</span></p>
+              <p class="ai-step-why"><span data-l="en">Leave nothing blank. If you're unsure, put your best guess and write it down as a guess.</span><span data-l="vi">Không để trống ô nào. Nếu chưa chắc, điền con số phỏng đoán tốt nhất và ghi chú lại đó là phỏng đoán.</span></p>
+            </li>
+            <li>
+              <p class="ai-step-title"><span data-l="en">Ask AI to challenge your inputs</span><span data-l="vi">Nhờ AI phản biện số liệu đầu vào</span></p>
+              <div class="prompt-box">
+                <pre data-l="en">Here are my inputs for an Amazon FBA product simulation: [paste your numbers]. Which three look too optimistic for a new seller, and why? For each, suggest a more careful number and tell me how I could check the real one.</pre>
+                <pre data-l="vi">Đây là số liệu đầu vào cho bảng mô phỏng sản phẩm Amazon FBA của tôi: [dán số liệu]. Ba con số nào trông quá lạc quan với một người bán mới, và vì sao? Với mỗi con số, gợi ý một mức thận trọng hơn và cho tôi biết cách kiểm tra con số thật.</pre>
+                <button class="prompt-copy" type="button"><span data-l="en">Copy</span><span data-l="vi">Sao chép</span></button>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <div class="lesson-actions">
+        <span class="stamp stamp--success done-state"><span data-l="en">Delivered</span><span data-l="vi">Đã giao</span></span>
+        <button class="btn btn--primary" type="button" data-toggle-done="3-2"><span data-l="en">Mark as delivered / undo</span><span data-l="vi">Đánh dấu đã giao / hoàn tác</span></button>
+      </div>
+      <nav class="part-nav" aria-label="Parts" data-aria-vi="Các phần">
+        <a href="lesson-3-1.html"><span class="eyebrow"><span data-l="en">&larr; Previous</span><span data-l="vi">&larr; Phần trước</span></span><strong><span data-l="en">3.1 Where the money goes</span><span data-l="vi">3.1 Tiền đi đâu</span></strong></a>
+        <a class="next" href="lesson-3-3.html"><span class="eyebrow"><span data-l="en">Next &rarr;</span><span data-l="vi">Tiếp theo &rarr;</span></span><strong><span data-l="en">3.3 Stress test and decide</span><span data-l="vi">3.3 Thử kịch bản xấu và ra quyết định</span></strong></a>
+      </nav>
+    </article>
+  </div>
+</main>
+
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html" aria-label="Ecom LAB home" data-aria-vi="Trang chủ Ecom LAB"><span class="logo-mark" aria-hidden="true">EL</span>Ecom LAB</a>
+        <p data-l="en">What happens behind every order.</p>
+        <p data-l="vi">Điều gì diễn ra phía sau mỗi đơn hàng.</p>
+      </div>
+      <div class="footer-links">
+        <h2><span data-l="en">Explore</span><span data-l="vi">Khám phá</span></h2>
+        <a href="course.html">Free courses</a>
+      </div>
+      <div class="footer-links">
+        <h2><span data-l="en">Connect</span><span data-l="vi">Kết nối</span></h2>
+        <a href="https://www.linkedin.com/in/hungvo1803" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/ecomlab-hungvo" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <p class="footer-note"><span>© 2026 Hùng Võ · Ecom LAB. </span><span data-l="en">Disclaimer: Views are my own, not any employer's. Ecom LAB is not affiliated with any marketplace. Content is for education only and is not professional advice.</span><span data-l="vi">Miễn trừ trách nhiệm: Quan điểm là của riêng mình, không đại diện cho công ty nào. Ecom LAB không liên kết với sàn nào. Nội dung chỉ nhằm mục đích học tập, không phải tư vấn chuyên môn.</span></p>
+  </div>
+</footer>
+<script src="assets/js/agenda.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/sim.js"></script>
+</body>
+</html>
