@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="slide-visual">
-            <img class="ring-photo" src="assets/img/hung-home.jpg" alt="Portrait of Hung Vo, smiling, on a dark green background" width="800" height="800">
+            <img class="ring-photo" src="assets/img/hung-profile.webp" alt="Portrait of Hung Vo, smiling, in a dark shirt with arms crossed" width="1024" height="1536">
           </div>
         </article>
 
@@ -125,7 +125,7 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>Experience</h2>
+          <h2><span data-l="en">My Experience</span><span data-l="vi">Kinh nghiệm của tôi</span></h2>
         </div>
       </div>
       <!-- Two timelines on one year scale (2015 to now). Each stop sets --s (start year) and --e (end year); --i sets the order it appears in. -->
@@ -145,7 +145,7 @@
         <div class="journey-track">
           <p class="journey-label"><svg class="icon" aria-hidden="true"><use href="#i-briefcase"/></svg>Work</p>
           <ol class="journey-line">
-            <li class="stop stop--up" style="--s:2018.7;--e:2020.5;--i:3"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2018–2020</b><strong>Decathlon</strong><span>Local Supply Chain</span></span></li>
+            <li class="stop stop--up" style="--s:2018.7;--e:2020.5;--i:3"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2018–2020</b><strong>Decathlon</strong><span>Production Planning</span></span></li>
             <li class="stop" style="--s:2020.5;--e:2021.5;--i:4"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2020–2021</b><strong>Castrol</strong><span>Supply Planning</span></span></li>
             <li class="stop stop--up" style="--s:2021.7;--e:2025.2;--i:5"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2021–2025</b><strong>US e-commerce LLC</strong><span>(Yes4All, Homewise)</span><span>New Product Development Planning</span></span></li>
             <li class="stop stop--now stop--end" style="--s:2025.35;--e:2026.9;--i:6"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2025–now</b><strong>Shopee</strong><span>Supply Chain Strategy</span></span></li>
@@ -215,6 +215,48 @@
           </li>
         </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--sunken" id="feedback">
+    <div class="container">
+      <div class="fb">
+        <div class="fb-intro">
+          <p class="eyebrow"><span data-l="en">Feedback</span><span data-l="vi">Góp ý</span></p>
+          <h2 data-l="en">Tell me what to fix.</h2>
+          <h2 data-l="vi">Góp ý để khoá học tốt hơn.</h2>
+          <p class="fb-lead"><span data-l="en">Something unclear, a wrong number, a topic you want next? Leave your contact so I can reply.</span><span data-l="vi">Chỗ nào khó hiểu, con số nào sai, chủ đề nào bạn muốn học tiếp? Để lại liên hệ để mình phản hồi bạn.</span></p>
+          <ul class="fb-steps">
+            <li><span class="fb-n">1</span><span data-l="en">Fill in the form</span><span data-l="vi">Điền form</span></li>
+            <li><span class="fb-n">2</span><span data-l="en">Your email app opens with it ready</span><span data-l="vi">Ứng dụng email mở sẵn nội dung</span></li>
+            <li><span class="fb-n">3</span><span data-l="en">Press send</span><span data-l="vi">Bấm gửi</span></li>
+          </ul>
+        </div>
+        <form class="fb-form" data-feedback novalidate>
+          <label class="fb-field"><span><span data-l="en">Your name</span><span data-l="vi">Tên của bạn</span></span><input name="name" type="text" autocomplete="name" required></label>
+          <label class="fb-field"><span><span data-l="en">Email or phone</span><span data-l="vi">Email hoặc số điện thoại</span></span><input name="contact" type="text" autocomplete="email" required></label>
+          <label class="fb-field"><span><span data-l="en">About</span><span data-l="vi">Góp ý cho</span></span>
+            <select name="part">
+              <option value="Whole course" data-vi="Cả khoá học">Whole course</option>
+              <option value="Lesson 1" data-vi="Bài 1">Lesson 1</option>
+              <option value="Lesson 2" data-vi="Bài 2">Lesson 2</option>
+              <option value="Lesson 3" data-vi="Bài 3">Lesson 3</option>
+              <option value="Website" data-vi="Website">Website</option>
+            </select>
+          </label>
+          <fieldset class="fb-rate"><legend><span data-l="en">How useful was it?</span><span data-l="vi">Khoá học hữu ích thế nào?</span></legend>
+            <label><input type="radio" name="rate" value="1"><span>1</span></label>
+            <label><input type="radio" name="rate" value="2"><span>2</span></label>
+            <label><input type="radio" name="rate" value="3"><span>3</span></label>
+            <label><input type="radio" name="rate" value="4"><span>4</span></label>
+            <label><input type="radio" name="rate" value="5"><span>5</span></label>
+          </fieldset>
+          <label class="fb-field fb-field--wide"><span><span data-l="en">Your feedback</span><span data-l="vi">Góp ý của bạn</span></span><textarea name="msg" rows="5" required></textarea></label>
+          <p class="fb-err" data-fb-err hidden><span data-l="en">Please add your name, contact and feedback.</span><span data-l="vi">Bạn điền giúp tên, liên hệ và góp ý nhé.</span></p>
+          <button class="btn btn--primary btn--block" type="submit"><span data-l="en">Send feedback</span><span data-l="vi">Gửi góp ý</span></button>
+          <p class="fb-note"><span data-l="en">Opens your email app, addressed to</span><span data-l="vi">Mở ứng dụng email, gửi tới</span> <a href="mailto:hugebamboo1803@gmail.com">hugebamboo1803@gmail.com</a></p>
+        </form>
       </div>
     </div>
   </section>

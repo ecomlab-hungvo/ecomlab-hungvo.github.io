@@ -98,7 +98,7 @@
     function start() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       bar.classList.add('is-playing');
-      timer = setInterval(function () { go(current + 1); }, 7000);
+      timer = setInterval(function () { go(current + 1); }, 15000);
     }
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () { stop(); go(i); });
@@ -405,4 +405,47 @@
     try { document.execCommand('copy'); } catch (err) {}
     document.body.removeChild(ta);
   }
+})();
+
+/* Feedback form: no server, so it opens the learner's email app with the message filled in */
+(function () {
+  var form = document.querySelector('[data-feedback]');
+  if (!form) return;
+  var TO = 'hugebamboo1803@gmail.com';
+  var root = document.documentElement;
+  var opts = form.querySelectorAll('option[data-vi]');
+  opts.forEach(function (o) { o.dataset.en = o.textContent; });
+  function localize() {
+    var vi = root.dataset.lang !== 'en';
+    opts.forEach(function (o) { o.textContent = vi ? o.dataset.vi : o.dataset.en; });
+  }
+  localize();
+  new MutationObserver(localize).observe(root, { attributes: true, attributeFilter: ['data-lang'] });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var err = form.querySelector('[data-fb-err]');
+    var bad = false;
+    ['name', 'contact', 'msg'].forEach(function (n) {
+      var f = form.elements[n];
+      var empty = !f.value.trim();
+      f.classList.toggle('is-bad', empty);
+      if (empty && !bad) { bad = true; f.focus(); }
+    });
+    err.hidden = !bad;
+    if (bad) return;
+    var rate = form.querySelector('input[name="rate"]:checked');
+    var part = form.elements.part.value;
+    var body = [
+      'Name: ' + form.elements.name.value.trim(),
+      'Contact: ' + form.elements.contact.value.trim(),
+      'About: ' + part,
+      'Useful (1-5): ' + (rate ? rate.value : '-'),
+      '',
+      form.elements.msg.value.trim()
+    ].join('\n');
+    window.location.href = 'mailto:' + TO +
+      '?subject=' + encodeURIComponent('Ecom LAB feedback: ' + part) +
+      '&body=' + encodeURIComponent(body);
+  });
 })();
