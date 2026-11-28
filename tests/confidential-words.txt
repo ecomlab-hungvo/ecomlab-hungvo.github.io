@@ -1,0 +1,9 @@
+# Words that must never appear on course or lesson pages (one per line, case-insensitive).
+# The About page may name past employers; this list is only checked on course and lesson pages.
+# Add internal tool names, client/supplier names, colleague names and project code names here.
+Y4A
+Turnkey
+Homewise
+Yes4All
+internal only
+confidential

@@ -1,0 +1,72 @@
+# Build the site and run the Playwright checks on every push and pull request.
+# Only a green build on main is deployed to GitHub Pages, so a broken build never goes live.
+# Needs: GitHub → Settings → Pages → Build and deployment → Source = "GitHub Actions".
+name: Site
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Build and check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      # 1. The live build: published courses only. Tests run on this exact output.
+      - run: npm run build
+      - run: npx playwright test
+        env:
+          SCREENS: '1'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-and-screenshots
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      # 2. Pull requests: also build with draft courses so you can download and look at them.
+      - name: Build preview with drafts (pull requests only)
+        if: github.event_name == 'pull_request'
+        run: npm run build:drafts
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request'
+        with:
+          name: preview-with-drafts
+          path: dist
+          retention-days: 14
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

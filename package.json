@@ -7,7 +7,9 @@
     "build": "astro build",
     "preview": "astro preview --port 4173",
     "test": "playwright test",
-    "check": "astro build && playwright test"
+    "check": "astro build && playwright test",
+    "build:drafts": "node scripts/with-drafts.mjs",
+    "check:drafts": "node scripts/with-drafts.mjs && playwright test"
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.3.14",

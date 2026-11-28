@@ -4,7 +4,9 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 export type Course = CollectionEntry<'courses'>;
 export type Lesson = CollectionEntry<'lessons'>;
 
-const isLive = (status: string) => status === 'published' || import.meta.env.DEV;   // drafts show while previewing locally
+// Drafts show while previewing locally (npm run dev) and in review builds (SHOW_DRAFTS=1), never on the live site.
+const showDrafts = import.meta.env.DEV || process.env.SHOW_DRAFTS === '1';
+const isLive = (status: string) => status === 'published' || showDrafts;
 
 export async function courses(): Promise<Course[]> {
   return (await getCollection('courses', c => isLive(c.data.status))).sort((a, b) => a.data.order - b.data.order);

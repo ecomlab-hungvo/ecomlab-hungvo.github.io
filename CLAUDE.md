@@ -1,118 +1,140 @@
-# Ecom LAB website
+# Ecom LAB website: rules for every session
 
-Hùng Võ's personal-branding site on supply chain and cross-border ecommerce, live at https://ecomlab-hungvo.github.io (GitHub Pages, branch `main`). Plain HTML, CSS and JavaScript: no build step, no framework.
+Hùng Võ's personal-branding site on supply chain and cross-border ecommerce, live at https://ecomlab-hungvo.github.io.
+Built with **Astro** (static output). Content lives in plain files; pages come from shared templates.
+The repo and the site are **public**: anything committed can be read by anyone.
+
+## How to work on a course (the workflow)
+
+Content is approved **before** any code. Use the slash commands in `.claude/commands/`, in this order:
+
+1. `/new-course <source files>` → sanitization report + `outline.md`. **Stop for Hùng's approval.**
+2. `/write-lessons <course-id>` → every lesson file, VI and EN. No site code. **Stop for Hùng's review.**
+3. `/build-course <course-id>` → only after the lessons are approved. Publishes through the shared template, then runs `/review`.
+4. `/review [course-id]` → screenshots and checks, fixes display problems, lists open items.
+5. `/apply-feedback` → Hùng pastes all feedback in one numbered message; apply all, run `/review`, reply with a table.
+
+Never skip a stop. Never change wording during `/review` without asking.
 
 ## Hard rules
 
-- Keep the name **Ecom LAB**.
-- Every page is bilingual (EN default, VI). The VI/EN toggle must work on every page.
-- Keep Hùng's copy and voice. Change text only when asked. Plain words, short sentences.
-- Never invent facts, numbers, testimonials or lesson titles. When something is missing, leave a clearly marked `[TODO: …]` and tell Hùng.
-- No email capture and no sign-up. Keep the "free, no sign-up" message.
-- Keep the current visual style. Structure changes are not redesigns.
-- Keep the disclaimer in the footer.
-- "See the course" appears at most once per page.
-- Commit only when asked. Push (= publish) only when Hùng says so. Use the GitHub no-reply email that is already set in this repo.
+- **Never invent** facts, numbers, examples, testimonials, quotes or titles. Missing info = `TODO: …` in the file, and list it in your summary.
+- **Bilingual on every page.** Every piece of text exists in English and Vietnamese. The VI/EN switch must work. English is the default.
+- **No email capture, no sign-up.** Keep the "free, no sign-up" message.
+- **Content approval comes before code** (workflow above).
+- **Keep the visual style.** Do not create new components, colours or layouts, and do not change the look, without asking first.
+- Keep the name **Ecom LAB**. Keep the disclaimer in the footer. "See the course" appears at most once per page.
+- Commit only when Hùng asks. Pushing to `main` publishes the site: push only when he says so.
+
+## Confidentiality (the repo and the site are public)
+
+Before any source text enters `content/`:
+
+- **Remove or replace:** company internal numbers (revenue, margin, volume, cost, prices paid), client / partner / supplier names, internal tool and system names, employee and colleague names, unreleased plans, project code names, and screenshots of internal systems.
+- **Replace real numbers** with clearly illustrative ones and mark them **"illustrative / minh họa"** next to the number.
+- **Public company names** only when needed for context (e.g. past employers on the About page). In lessons, use generic wording ("a US ecommerce company", "a supplier in Asia").
+- **When unsure, flag it and ask.** Do not guess.
+- Source slides and documents stay **outside** the repo, in `../../04-ecom-lab-course/sources/<course-id>/`. Never copy them into this repo.
+- `tests/confidential-words.txt` lists words that must never appear on course or lesson pages. Add new ones when you find them.
+
+## Voice
+
+- Plain words. Short sentences. Punchy. End each section and each lesson with a strong closing line.
+- **Do not upgrade vocabulary.** Keep Hùng's wording from the source material wherever possible.
+- English voice: a friendly first-person guide ("I", "you"). Vietnamese voice: "mình" and "bạn".
+- One idea per section, so it fits one screen in present mode (he screen-records lessons for YouTube).
+- Prefer a visual (tiles, steps, a table) over a paragraph. Longer explanation goes in `<Notes>`.
+- Examples are easy and Amazon-relevant (made in Asia, sold to US shoppers).
 
 ## Site structure
 
-| Page | What it is |
+| Page | Built from |
 |---|---|
-| `index.html` | Hero "What happens behind every order" + 3 cards (About, Courses, Resources). Nothing else. |
-| `about.html` | Intro, portrait, LinkedIn, experience timeline, one result per work role, testimonials (from data), feedback button, contact. |
-| `courses.html` | Course cards, rendered from `data/courses.json`. |
-| `course.html` | EL-101 detail: lessons, all 12 parts, course materials, feedback block. |
-| `lesson-1-1.html` … `lesson-3-3.html` | The 12 parts of EL-101. The last part of each lesson (1.3, 2.5, 3.3) ends with a feedback block. |
-| `resources.html` | Notion resource cards from `data/resources.json`, with a topic filter. |
-| `feedback.html` | Feedback page with the Google Form embedded (form link and topic field id in `assets/js/feedback.js`). Links preselect the topic with `?about=course`, `lesson-1`, `lesson-2`, `lesson-3`, `resources` or `website`; the choice text in feedback.js must match the form exactly. |
+| Home `index.html` | `src/pages/index.astro`: hero + 3 cards (About, Courses, Resources) |
+| About `about.html` | `src/pages/about.astro` + `public/data/testimonials.json` (shown only with 3 or more entries) |
+| Courses `courses.html` | `src/pages/courses.astro`: one card per published course in `content/courses/*/course.json` |
+| A course page | `src/components/CoursePage.astro`, from `course.json` + the lesson files |
+| A lesson page | `src/pages/[...page].astro`, from one file in `content/courses/<id>/lessons/` |
+| Resources `resources.html` | `src/pages/resources.astro` + `public/data/resources.json` (Notion links, topic filter) |
+| Feedback `feedback.html` | `src/pages/feedback.astro` + `public/assets/js/feedback.js` (Google Form, topic preselected by `?about=`) |
 
-Header nav on every page: About · Courses · Resources · VI/EN. The header and footer are copied into every page, so change them in all pages. `main.js` marks the current section; course and lesson pages count as Courses.
+Shared: `src/layouts/Base.astro` (head, header, footer, scripts). Styles: `public/assets/css/style.css`. Scripts: `public/assets/js/` (`main.js` language/icons/reveals, `theme.js` background/dark zones, `agenda.js` lesson agenda, `data.js` resources/testimonials, `sim.js` profit simulator, `feedback.js`).
 
-### Scripts
+### Course content files
 
-- `assets/js/main.js`: language toggle (also swaps `<title>` and meta description), icons, reveal animations, lesson tools. Every page.
-- `assets/js/data.js`: renders lists from `data/`. Loaded on about, courses and resources.
-- `assets/js/agenda.js`: the list of lesson and part titles for the left agenda on part pages. Loaded before main.js on lesson pages.
-- `assets/js/sim.js`: profit simulator in 3.2 and 3.3.
-- `assets/js/feedback.js`: puts the Google Form on `feedback.html` and preselects the topic.
-
-`data/*.json` files are loaded with `fetch()`, so preview through a local server (the `ecom-lab` preview, port 4173), not by opening the file directly.
-
-## Bilingual text
-
-- Every sentence appears twice: `<span data-l="en">…</span><span data-l="vi">…</span>` (or on block elements, `data-l` on the `<p>`/`<h2>`). Update both.
-- Aria labels: English in `aria-label`, Vietnamese in `data-aria-vi`.
-- Page title: English in `<title>`, Vietnamese in `data-title-vi` on `<html>`.
-- Meta description: English in `<meta name="description">`, Vietnamese in `data-desc-vi` on `<html>`.
-- Each page also has its own canonical URL and Open Graph tags under the description. Keep `og:title` and `og:description` equal to the English title and description.
-
-## Data files
-
-All entries carry both languages.
-
-### Add a course: `data/courses.json`
-
-```json
-{
-  "code": "EL-102",
-  "status": "open",
-  "url": "course-el-102.html",
-  "title_en": "", "title_vi": "",
-  "summary_en": "", "summary_vi": "",
-  "meta_en": "3 lessons · 12 parts · about 2 hours", "meta_vi": "3 bài · 12 phần · khoảng 2 giờ",
-  "points": [ { "en": "", "vi": "" } ]
-}
+```
+content/courses/<course-id>/
+├─ course.json            id, code, title_vi/en, summary_vi/en, level, duration, status (draft | published),
+│                         card, hero, receipt, pack, stats, lessons[] (groups), materials[]
+├─ outline.md             lessons and parts, one-line goal, minutes, sanitization report, open TODOs
+└─ lessons/<nn>-<slug>.mdx   one page per part, VI and EN, standard structure below
 ```
 
-`status` other than `"open"` (or no `url`) shows the card as "Soon" without a link.
+- `status: draft` shows locally (`npm run dev`) and in review builds, **never** on the live site. `published` goes live on the next push.
+- Copy `content/courses/_template/` to start a new course. The schema in `src/content.config.ts` fails the build if a field is missing.
+- **Add a course = add files. Zero new page code.**
+- Lesson URL: `courses/<course-id>/<nn>-<slug>.html`. Course URL: `courses/<course-id>.html`.
+- **EL-101 is the exception:** built by hand before this workflow, moved here word for word on 2026-11-28. Its lessons keep their old URLs (`lesson-1-1.html` …) and their body is in a `.html` file next to each `.mdx` (`legacy_html`). They do not follow the standard structure yet. Do not rewrite them unless Hùng asks.
+- The Google Form's topic list (Whole course, Lesson 1–3, Resources, Website) fits EL-101. A new course needs its topics added to the form by Hùng; until then its feedback links preselect nothing.
 
-### Add a resource: `data/resources.json`
+### Lesson front matter
 
-```json
-{
-  "title_vi": "", "title_en": "",
-  "summary_vi": "", "summary_en": "",
-  "topic": "Supply chain",
-  "type": "Template",
-  "url": "https://www.notion.so/…"
-}
+`course`, `id` (unique site-wide), `order`, `lesson` (group number), `part` ("1.1"), `status`, `title_en/vi`, `lead_en/vi`, `minutes`, `video` (YouTube link, empty for now), `draft_note` (true until Hùng approves), `feedback` (`part` default, `lesson-end`, `none`), optional `scripts` (e.g. `["sim"]`).
+
+## Standard lesson structure (in this order)
+
+1. **Learning objectives**: `<Objectives>`
+2. **Content parts**: one or more `<Section>`, one idea each
+3. **Real-world example**: `<Example>`
+4. **Practice task**: `<Practice>` with `<Steps>`, `<Step>`, `<Prompt>`, `<Reflect>`
+5. **Key takeaways**: `<Takeaways>`, last line = strongest line
+6. **Feedback link**: added by the template (`feedback` in front matter)
+
+The checks in `tests/site.spec.ts` fail if a standard lesson has these blocks out of order or missing.
+
+## Allowed UI components
+
+Only these, in lesson `.mdx` files (`src/components/lesson/`). Anything else needs Hùng's OK first.
+
+| Component | Use |
+|---|---|
+| `<En>` / `<Vi>` | Text in one language. Markdown inside: paragraphs, lists, **bold**, links, tables. Leave a blank line after the opening tag and before the closing tag. |
+| `<Section eyebrow title_en title_vi mark_en mark_vi>` | One content part; `mark_*` = words with the hand-drawn highlighter |
+| `<Objectives>` `<Example>` `<Practice>` `<Takeaways>` | The standard blocks |
+| `<Steps>` `<Step title_* why_*>` `<Prompt en vi>` `<Reflect>` | Practice steps, copyable AI prompts, closing question |
+| `<Tiles cols>` `<Tile icon title_* text_* num source source_href>` | 2–4 tiles; a number tile needs a `source` |
+| `<Notes>` | Folded longer explanation |
+| `<Callout title_en title_vi>` | One short highlighted remark |
+| Markdown table | Inside `<En>`/`<Vi>` |
+
+Icons: the names in `ICONS` in `public/assets/js/main.js` (box, chart, coin, ship, store, truck, user, warehouse, globe, …).
+Page-level patterns already in the site (cards, receipt, timeline, filter, dark zones) are used by templates only.
+
+## Theme
+
+One cream paper background; sections with `data-flip` turn the page deep forest while on screen (home cards, About experience, course part list). Light/dark switch in the header (`ecomlab-theme`), off on lesson pages (`data-no-dark`) so recordings look the same. Colours come from tokens at the end of `style.css`; use `--surface`, `--text-primary`, `--border`, `--accent-text`, never raw colours.
+
+## Commands
+
+```
+npm run dev            # local preview with drafts, http://localhost:4173
+npm run build          # live build (published only) into dist/
+npm run build:drafts   # review build including drafts
+npm test               # Playwright checks on dist/ (SCREENS=1 saves screenshots, PAGES=a.html,b.html limits pages)
+npm run check          # build + test, what CI runs
+npm run check:drafts   # same, including draft courses
 ```
 
-- `topic` must be one of `Supply chain`, `Ecommerce`, `Career`. That's what the filter uses.
-- `type` must be one of `Template`, `Checklist`, `Article`.
-- An empty list shows one line and a button to the Notion hub.
+Node is at `C:\Program Files\nodejs`. In the Bash tool, run `export PATH="/c/Program Files/nodejs:$PATH"` first.
+The Claude preview server `ecom-lab` (in the parent folder's `.claude/launch.json`) runs `astro dev`.
+Publishing: push to `main` → GitHub Actions (`.github/workflows/site.yml`) builds, runs the checks, and deploys only if everything passes.
 
-### Add a testimonial: `data/testimonials.json`
+## Definition of done
 
-```json
-{ "quote_vi": "", "quote_en": "", "name": "", "role": "" }
-```
+A change is done when **all** of these hold:
 
-The "What learners say" section on About stays hidden until there are **3 or more** entries. Only add real quotes with the learner's permission.
-
-## Lesson pages (EL-101)
-
-- **Add a YouTube video:** find `data-youtube=""` in the part page and paste the link.
-- **Part titles** live in `assets/js/agenda.js` and in the part list on `course.html`. Change both.
-- **Publish a new part:** copy an existing part page, change `data-agenda`, `data-lesson` and `data-toggle-done` to the new id, fix prev/next links, and add `href` to the part in `agenda.js`.
-- **Present mode** turns each `section.part-section` into one slide. Keep one idea per section.
-- **Text sizes** come from the `--fs-*` tokens at the top of `style.css`. Use a token, not a raw pixel size (SVG scene text is the exception).
-
-## Placeholders still to fill
-
-Search the repo for `[TODO` and for these tokens before publishing:
-
-- `[NOTION_RESOURCES_URL]`: empty-state button on `resources.html`.
-- `[TODO: result]`: one measurable result per work role on About.
-- `[TODO: slides link]`, `[TODO: spreadsheet link]`: course materials on `course.html`.
-- `TODO: replace with a 1200x630 share image`: `og:image` on every page.
-- `Draft:` notes at the top of each lesson page.
-
-## Theme (light paper, scroll-to-dark, mouse effects)
-
-- One cream "paper" background on every page. Colours are mixed between a light set (`--L-*`) and a dark set (`--D-*`) at the end of `style.css` by `--flip` (0 = paper, 1 = deep forest). Use the normal tokens (`--surface`, `--text-primary`, `--border`, …) and they follow the flip.
-- **Scroll-to-dark:** add `data-flip` to a section and the page turns dark while that section is on screen (home cards, About experience, EL-101 part list). `assets/js/theme.js` sets `--flip`. It never turns dark before the reader scrolls.
-- **Light/dark switch** (moon/sun button in the header) is saved as `ecomlab-theme`. Without a saved choice the site follows the device setting.
-- **Lesson pages stay light:** they carry `data-no-dark` on `<html>`, so no switch and no flip, so screen recordings look the same.
-- **Background and mouse:** `theme.js` adds a map-dot layer with faint dashed routes, a paper grain, and a soft coral glow that follows the mouse. Hover effects use the `--spring` easing. Mouse effects are off on touch screens and for people who ask for reduced motion.
-- Headings use `.mark` for a hand-drawn highlighter that sweeps in when it scrolls into view.
+1. `npm run check` passes (build + every Playwright check), and `npm run check:drafts` when a draft course changed.
+2. Screenshots at 390px and 1280px, VI and EN, were looked at for every changed page.
+3. Every TODO and every confidentiality question is listed in the summary to Hùng.
+4. No wording was changed without Hùng's approval.
+5. Nothing was pushed unless Hùng said so.
