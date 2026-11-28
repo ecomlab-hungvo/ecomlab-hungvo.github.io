@@ -1,0 +1,133 @@
+---
+// The course page, drawn from content/courses/<id>/course.json and the lesson files.
+import T from './T.astro';
+import { lessonPath, href, groupStats, type Course, type Lesson } from '../lib/courses';
+interface Props { course: Course; lessons: Lesson[] }
+const { course, lessons } = Astro.props;
+const c = course.data;
+const pad = (n: number) => String(n).padStart(2, '0');
+const first = lessons[0];
+---
+<main id="main" tabindex="-1">
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow"><T en={c.hero.eyebrow.en} vi={c.hero.eyebrow.vi} /></p>
+        <h1 data-l="en">{c.hero.title.en}{c.hero.title_mark && <> <span class="mark">{c.hero.title_mark.en}</span></>}</h1>
+        <h1 data-l="vi">{c.hero.title.vi}{c.hero.title_mark && <> <span class="mark">{c.hero.title_mark.vi}</span></>}</h1>
+        {c.hero.points_lead && <p class="hero-points-lead"><T en={c.hero.points_lead.en} vi={c.hero.points_lead.vi} /></p>}
+        {c.hero.points.length > 0 && (
+          <ol class="hero-points" data-reveal>
+            {c.hero.points.map((p, i) => <li class="r" style={`--i:${i}`}><span class="hp-num">{pad(i + 1)}</span><span><T en={p.en} vi={p.vi} /></span></li>)}
+          </ol>
+        )}
+        {c.hero.meta && <p class="hero-meta"><T en={c.hero.meta.en} vi={c.hero.meta.vi} /></p>}
+      </div>
+      <article class="receipt">
+        <div class="receipt-body">
+          <div class="receipt-head"><span class="eyebrow">{c.code}</span></div>
+          <dl class="lines" style="margin-top:16px">
+            {c.receipt.map(r => (
+              <div><dt><svg class="icon" aria-hidden="true"><use href={`#i-${r.icon}`}/></svg><T en={r.label.en} vi={r.label.vi} /></dt><dd>{r.plain ? r.value.en : <T en={r.value.en} vi={r.value.vi} />}</dd></div>
+            ))}
+          </dl>
+          <p class="total"><span><span data-l="en">Total</span><span data-l="vi">Tổng cộng</span></span><span class="price"><span data-l="en">Free</span><span data-l="vi">Miễn phí</span></span></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  {c.pack && (
+  <section class="band">
+    <div class="container">
+      <div class="section-head"><div>
+        <p class="eyebrow"><T en={c.pack.eyebrow.en} vi={c.pack.eyebrow.vi} /></p>
+        <h2 data-l="en">{c.pack.title.en}</h2>
+        <h2 data-l="vi">{c.pack.title.vi}</h2>
+      </div></div>
+      <div class="pack" data-reveal>
+        <span class="pack-tag"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg><T en={c.pack.tag.en} vi={c.pack.tag.vi} /></span>
+        <ul class="pack-grid">
+          {c.pack.items.map((it, i) => <li class="pack-item" style={`--i:${i}`}><span class="pack-ico"><svg class="icon" aria-hidden="true"><use href={`#i-${it.icon}`}/></svg></span><strong data-l="en">{it.title.en}</strong><strong data-l="vi">{it.title.vi}</strong><p data-l="en">{it.text.en}</p><p data-l="vi">{it.text.vi}</p></li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+  )}
+
+  <section class="band band--sunken">
+    <div class="container">
+      <div class="section-head"><div>
+        <p class="eyebrow"><span data-l="en">Curriculum</span><span data-l="vi">Nội dung khoá học</span></p>
+        <h2><span data-l="en">What's in the course</span><span data-l="vi">Khoá học có gì</span></h2>
+      </div></div>
+      {c.stats.length > 0 && (
+        <ul class="c-stats">
+          {c.stats.map(s => <li class="c-stat"><b>{s.value}</b><span data-l="en">{s.label.en}</span><span data-l="vi">{s.label.vi}</span></li>)}
+        </ul>
+      )}
+      <div class="lcards" data-reveal>
+        {c.lessons.map((g, i) => {
+          const st = groupStats(lessons, g.n);
+          return st.first ? (
+            <a class="lcard lcard--open on-dark" href={href(lessonPath(st.first))} style={`--i:${i}`}>
+              <span class="lcard-top"><span class="lcard-num">{pad(g.n)}</span><svg class="icon lcard-ico" aria-hidden="true"><use href={`#i-${g.icon}`}/></svg></span>
+              <span class="eyebrow"><span data-l="en">Lesson {g.n} · {st.count} parts · {st.minutes} min</span><span data-l="vi">Bài {g.n} · {st.count} phần · {st.minutes} phút</span></span>
+              <h3><T en={g.title.en} vi={g.title.vi} /></h3>
+              <ul class="lcard-points">{g.points.map(p => <li><T en={p.en} vi={p.vi} /></li>)}</ul>
+              <span class="lcard-foot"><span data-l="en">Start learning</span><span data-l="vi">Vào học</span><span aria-hidden="true">&rarr;</span></span>
+            </a>
+          ) : (
+            <div class="lcard lcard--soon" style={`--i:${i}`}>
+              <span class="lcard-top"><span class="lcard-num">{pad(g.n)}</span><svg class="icon lcard-ico" aria-hidden="true"><use href={`#i-${g.icon}`}/></svg></span>
+              <span class="eyebrow"><span data-l="en">Lesson {g.n} · Soon</span><span data-l="vi">Bài {g.n} · Sắp có</span></span>
+              <h3><T en={g.title.en} vi={g.title.vi} /></h3>
+              <ul class="lcard-points">{g.points.map(p => <li><T en={p.en} vi={p.vi} /></li>)}</ul>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--flip" data-flip>
+    <div class="container">
+      <div class="section-head"><div>
+        <p class="eyebrow"><span data-l="en">All parts</span><span data-l="vi">Tất cả các phần</span></p>
+        <h2><span data-l="en">{c.lessons.length} lessons, {lessons.length} parts</span><span data-l="vi">{c.lessons.length} bài, {lessons.length} phần</span></h2>
+      </div></div>
+      <div class="parts">
+        {c.lessons.map(g => (
+          <div class="parts-col">
+            <h3><span class="parts-num">{pad(g.n)}</span><T en={g.title.en} vi={g.title.vi} /></h3>
+            <ol>
+              {lessons.filter(l => l.data.lesson === g.n).map(l => <li><a href={href(lessonPath(l))}><b>{l.data.part}</b><T en={l.data.title_en} vi={l.data.title_vi} /></a></li>)}
+            </ol>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--sunken">
+    <div class="container">
+      {c.materials.length > 0 && <>
+        <div class="section-head"><div>
+          <p class="eyebrow"><span data-l="en">Course materials</span><span data-l="vi">Tài liệu khoá học</span></p>
+          <h2><span data-l="en">Use these as you learn</span><span data-l="vi">Dùng khi bạn học</span></h2>
+        </div></div>
+        <ul class="results mats">
+          {c.materials.map(m => (
+            <li><span class="results-who"><b><T en={m.title.en} vi={m.title.vi} /></b><span>{m.plain_where ? m.where.en : <T en={m.where.en} vi={m.where.vi} />}</span></span>{m.href && m.link
+              ? <a class="results-what" href={m.href}><T en={m.link.en} vi={m.link.vi} /> &rarr;</a>
+              : <span class="results-what todo">{m.todo ?? '[TODO: link]'}</span>}</li>
+          ))}
+        </ul>
+      </>}
+      <div class="fb-box">
+        <p><strong><span data-l="en">Finished the course?</span><span data-l="vi">Học xong khoá rồi?</span></strong><span data-l="en">Tell me what was clear, what wasn't, and what you want next.</span><span data-l="vi">Cho mình biết chỗ nào rõ, chỗ nào chưa, và bạn muốn học gì tiếp.</span></p>
+        <a class="btn btn--primary" href="/feedback.html?about=course" target="_blank" rel="noopener"><span data-l="en">Send feedback</span><span data-l="vi">Gửi góp ý</span> <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,9 @@
+---
+// A short highlighted remark inside a section.
+interface Props { title_en: string; title_vi: string }
+const { title_en, title_vi } = Astro.props;
+---
+<div class="ai-reflect lx-callout">
+  <p class="ai-step-title"><span data-l="en">{title_en}</span><span data-l="vi">{title_vi}</span></p>
+  <slot />
+</div>

@@ -1,0 +1,10 @@
+---
+// Standard block 3: one real-world example. Numbers must be public or marked "illustrative / minh họa".
+interface Props { title_en?: string; title_vi?: string }
+const { title_en = 'Real-world example', title_vi = 'Ví dụ thực tế' } = Astro.props;
+---
+<section class="part-section lx-example">
+  <p class="eyebrow"><span data-l="en">Example</span><span data-l="vi">Ví dụ</span></p>
+  <h2><span data-l="en">{title_en}</span><span data-l="vi">{title_vi}</span></h2>
+  <div class="v-card"><slot /></div>
+</section>

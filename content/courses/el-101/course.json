@@ -1,0 +1,103 @@
+{
+  "id": "el-101",
+  "code": "EL-101",
+  "order": 1,
+  "status": "published",
+  "path": "course",
+  "level": "beginner",
+  "duration": { "en": "About 2 hours", "vi": "Khoảng 2 giờ" },
+  "title_en": "From idea to profit on Amazon",
+  "title_vi": "Từ ý tưởng đến lợi nhuận trên Amazon",
+  "summary_en": "Three lessons, from how goods cross borders to whether your product makes money.",
+  "summary_vi": "Ba bài, từ cách hàng đi xuyên biên giới đến bài toán sản phẩm có lời hay không.",
+  "page_title_en": "EL-101: From idea to profit on Amazon | Ecom LAB",
+  "page_title_vi": "EL-101: Từ ý tưởng đến lợi nhuận trên Amazon | Ecom LAB",
+  "page_desc_en": "A free course for newcomers: selling cross-border on Amazon, taking a product from idea to launch, and checking whether it makes money.",
+  "page_desc_vi": "Khoá học miễn phí cho người mới: bán hàng xuyên biên giới trên Amazon, đưa sản phẩm từ ý tưởng đến lúc bán và tính xem có lời không.",
+
+  "card": {
+    "meta": { "en": "3 lessons · 12 parts · about 2 hours", "vi": "3 bài · 12 phần · khoảng 2 giờ" },
+    "points": [
+      { "en": "How cross-border ecommerce works", "vi": "Thương mại điện tử xuyên biên giới vận hành ra sao" },
+      { "en": "New product introduction", "vi": "Ra mắt sản phẩm mới" },
+      { "en": "Profit simulation", "vi": "Mô phỏng lợi nhuận" }
+    ]
+  },
+
+  "hero": {
+    "eyebrow": { "en": "Free courses · EL-101", "vi": "Khoá học miễn phí · EL-101" },
+    "title": { "en": "From idea to profit", "vi": "Từ ý tưởng đến lợi nhuận" },
+    "title_mark": { "en": "on Amazon.", "vi": "trên Amazon." },
+    "points_lead": { "en": "In this course you'll learn:", "vi": "Trong khoá này, bạn sẽ học:" },
+    "points": [
+      { "en": "How a product made in Asia reaches shoppers in the US", "vi": "Một sản phẩm làm ở châu Á đến tay khách hàng Mỹ ra sao" },
+      { "en": "How to find a product, from the first idea to launch", "vi": "Cách tìm sản phẩm, từ lúc lên ý tưởng đến lúc bán" },
+      { "en": "How to tell whether your product will make money", "vi": "Làm sao biết sản phẩm kinh doanh có lời hay không" }
+    ],
+    "meta": { "en": "For complete beginners · No sign-up", "vi": "Dành cho người mới · Không cần đăng ký" }
+  },
+
+  "receipt": [
+    { "icon": "list", "label": { "en": "Lessons", "vi": "Số bài" }, "value": { "en": "3 lessons · 12 parts", "vi": "3 bài · 12 phần" } },
+    { "icon": "live", "label": { "en": "Video", "vi": "Video" }, "value": { "en": "About 2 hours", "vi": "Khoảng 2 giờ" } },
+    { "icon": "pen", "label": { "en": "Practice", "vi": "Thực hành" }, "value": { "en": "Every part", "vi": "Mỗi phần" } },
+    { "icon": "book", "label": { "en": "Languages", "vi": "Ngôn ngữ" }, "value": { "en": "VI / EN", "vi": "VI / EN" }, "plain": true },
+    { "icon": "check", "label": { "en": "Sign-up", "vi": "Đăng ký" }, "value": { "en": "None needed", "vi": "Không cần" } }
+  ],
+
+  "pack": {
+    "eyebrow": { "en": "Every part includes", "vi": "Mỗi phần học gồm" },
+    "title": { "en": "Four things in each box.", "vi": "Bốn thứ trong mỗi kiện hàng." },
+    "tag": { "en": "1 part = 1 parcel", "vi": "1 phần học = 1 kiện hàng" },
+    "items": [
+      { "icon": "live", "title": { "en": "A short video", "vi": "Một video ngắn" }, "text": { "en": "On YouTube, inside the lesson.", "vi": "Trên YouTube, ngay trong bài." } },
+      { "icon": "chart", "title": { "en": "Visual slides", "vi": "Slide trực quan" }, "text": { "en": "Each idea as a chart or diagram.", "vi": "Mỗi ý là một biểu đồ hay sơ đồ." } },
+      { "icon": "list", "title": { "en": "Key takeaways", "vi": "Ý chính" }, "text": { "en": "What to remember, in a few lines.", "vi": "Điều cần nhớ, gói trong vài dòng." } },
+      { "icon": "pen", "title": { "en": "A practice task", "vi": "Bài thực hành" }, "text": { "en": "One small job to try right away.", "vi": "Một việc nhỏ để làm thử ngay." } }
+    ]
+  },
+
+  "stats": [
+    { "value": "3", "label": { "en": "lessons", "vi": "bài học" } },
+    { "value": "12", "label": { "en": "short parts", "vi": "phần ngắn" } },
+    { "value": "~2", "label": { "en": "hours of video", "vi": "giờ video" } },
+    { "value": "1", "label": { "en": "final project", "vi": "dự án cuối khoá" } }
+  ],
+
+  "lessons": [
+    {
+      "n": 1, "icon": "globe",
+      "title": { "en": "How cross-border ecommerce works", "vi": "Thương mại điện tử xuyên biên giới vận hành ra sao" },
+      "points": [
+        { "en": "What cross-border ecommerce is", "vi": "Thương mại điện tử xuyên biên giới là gì" },
+        { "en": "What's inside Amazon", "vi": "Bên trong Amazon có gì" },
+        { "en": "From listing to checkout: how shoppers find and buy", "vi": "Từ trang sản phẩm tới cú bấm mua: người mua tìm và chọn ra sao" }
+      ]
+    },
+    {
+      "n": 2, "icon": "target",
+      "title": { "en": "New product introduction", "vi": "Ra mắt sản phẩm mới" },
+      "points": [
+        { "en": "Find and choose product ideas", "vi": "Tìm và chọn ý tưởng sản phẩm" },
+        { "en": "Test the concept, then develop it", "vi": "Kiểm tra ý tưởng, rồi phát triển sản phẩm" },
+        { "en": "First production and launch", "vi": "Sản xuất lô đầu và ra mắt" }
+      ]
+    },
+    {
+      "n": 3, "icon": "chart",
+      "title": { "en": "Profit simulation", "vi": "Mô phỏng lợi nhuận" },
+      "points": [
+        { "en": "Where the money goes", "vi": "Tiền đi đâu" },
+        { "en": "Build your simulation, with a free template", "vi": "Dựng bảng mô phỏng, kèm mẫu miễn phí" },
+        { "en": "Final project: go or no-go?", "vi": "Dự án cuối: làm hay không làm?" }
+      ]
+    }
+  ],
+
+  "materials": [
+    { "title": { "en": "Visual slides", "vi": "Slide trực quan" }, "where": { "en": "Every part", "vi": "Mỗi phần" }, "todo": "[TODO: slides link]" },
+    { "title": { "en": "Practice tasks", "vi": "Bài thực hành" }, "where": { "en": "End of every part", "vi": "Cuối mỗi phần" }, "href": "lesson-1-1.html", "link": { "en": "Start with part 1.1", "vi": "Bắt đầu từ phần 1.1" } },
+    { "title": { "en": "Profit simulation", "vi": "Mô phỏng lợi nhuận" }, "where": { "en": "Part 3.2 · CSV download", "vi": "Phần 3.2 · Tải CSV" }, "href": "lesson-3-2.html#simulator", "link": { "en": "Open the simulator", "vi": "Mở bảng mô phỏng" } },
+    { "title": { "en": "Spreadsheet template", "vi": "File bảng tính mẫu" }, "where": { "en": "Excel / Google Sheets", "vi": "Excel / Google Sheets" }, "plain_where": true, "todo": "[TODO: spreadsheet link]" }
+  ]
+}

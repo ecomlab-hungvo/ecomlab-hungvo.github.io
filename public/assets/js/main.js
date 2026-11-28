@@ -58,10 +58,11 @@
   var descEn = metaDesc ? metaDesc.getAttribute('content') : '';
 
   // Header: mark the section this page belongs to. Course and lesson pages count as Courses.
-  var page = location.pathname.split('/').pop() || 'index.html';
-  var section = /^(course|lesson-)/.test(page) ? 'courses.html' : page;
+  var where = location.pathname;
+  var page = where.split('/').pop() || 'index.html';
+  var section = (/^(course|lesson-)/.test(page) || where.indexOf('/courses/') !== -1) ? 'courses.html' : page.replace(/\.html$/, '') + '.html';
   document.querySelectorAll('.nav a').forEach(function (a) {
-    if (a.getAttribute('href') === section) a.setAttribute('aria-current', 'page');
+    if (a.getAttribute('href').replace(/^\//, '') === section) a.setAttribute('aria-current', 'page');
   });
   function setLang(lang) {
     root.lang = lang;

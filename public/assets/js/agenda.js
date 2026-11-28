@@ -1,7 +1,9 @@
 /* Ecom Lab: the lesson agenda on the left of every part page.
    The course list lives here once. To publish a part, add its href. Load this before main.js. */
 (function () {
-  var COURSE = [
+  // Course pages built by Astro pass their own list in window.ECOM_COURSE; this list is the fallback.
+  var DATA = window.ECOM_COURSE;
+  var COURSE = DATA ? DATA.groups : [
     { en: 'How cross-border ecommerce works', vi: 'Thương mại điện tử xuyên biên giới vận hành ra sao', parts: [
       { id: '1-1', num: '1.1', href: 'lesson-1-1.html', en: 'What cross-border ecommerce is', vi: 'Thương mại điện tử xuyên biên giới là gì' },
       { id: '1-2', num: '1.2', href: 'lesson-1-2.html', en: 'Inside Amazon', vi: 'Bên trong Amazon' },
@@ -51,7 +53,7 @@
     });
     html += '</ul></div>';
   });
-  html += '<a class="agenda-back" href="course.html">&larr; ' + both('Course overview', 'Tổng quan khoá học') + '</a></nav>' +
+  html += '<a class="agenda-back" href="' + (DATA ? DATA.home : 'course.html') + '">&larr; ' + both('Course overview', 'Tổng quan khoá học') + '</a></nav>' +
     '<div class="agenda-backdrop" hidden></div>';
   shell.insertAdjacentHTML('afterbegin', html);
 

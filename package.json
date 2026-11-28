@@ -10,7 +10,9 @@
     "check": "astro build && playwright test"
   },
   "devDependencies": {
+    "@astrojs/mdx": "^4.3.14",
     "@playwright/test": "^1.65.1",
-    "astro": "^5.18.2"
+    "astro": "^5.18.2",
+    "node-html-parser": "^9.0.7"
   }
 }

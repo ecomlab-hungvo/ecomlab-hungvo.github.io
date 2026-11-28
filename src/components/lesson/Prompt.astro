@@ -1,0 +1,10 @@
+---
+// A copyable AI prompt in both languages.
+interface Props { en: string; vi: string }
+const { en, vi } = Astro.props;
+---
+<div class="prompt-box">
+  <pre data-l="en">{en}</pre>
+  <pre data-l="vi">{vi}</pre>
+  <button class="prompt-copy" type="button"><span data-l="en">Copy</span><span data-l="vi">Sao chép</span></button>
+</div>

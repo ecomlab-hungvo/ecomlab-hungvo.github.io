@@ -1,0 +1,12 @@
+---
+// One tile: icon, title, one line. Icons: see ICONS in assets/js/main.js (box, chart, coin, ship, store, truck, user …).
+interface Props { icon?: string; title_en: string; title_vi: string; text_en?: string; text_vi?: string; num?: string; source?: string; source_href?: string }
+const { icon, title_en, title_vi, text_en, text_vi, num, source, source_href } = Astro.props;
+---
+<div class="v-tile r">
+  {icon && <span class="v-dot"><svg class="icon" aria-hidden="true"><use href={`#i-${icon}`}/></svg></span>}
+  {num && <p class="v-tile-num">{num}</p>}
+  <strong><span data-l="en">{title_en}</span><span data-l="vi">{title_vi}</span></strong>
+  {text_en && <p><span data-l="en">{text_en}</span><span data-l="vi">{text_vi}</span></p>}
+  {source && <p class="v-tile-src">{source_href ? <a href={source_href} rel="noopener">{source}</a> : source}</p>}
+</div>

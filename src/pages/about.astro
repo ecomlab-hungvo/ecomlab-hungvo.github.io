@@ -1,0 +1,112 @@
+---
+import Base from '../layouts/Base.astro';
+const page = {
+  "titleEn": "About Hung Vo | Ecom LAB",
+  "titleVi": "Giới thiệu Hùng Võ | Ecom LAB",
+  "descEn": "Hung Vo has worked in supply chain and ecommerce since 2018, at Decathlon, Castrol, a US ecommerce company and Shopee. Experience, contact and feedback.",
+  "descVi": "Hùng Võ làm chuỗi cung ứng và thương mại điện tử từ năm 2018, tại Decathlon, Castrol, một công ty thương mại điện tử Mỹ và Shopee. Kinh nghiệm, liên hệ và góp ý.",
+  "path": "about.html"
+};
+---
+<Base {...page} after={["data"]}>
+<main id="main" tabindex="-1">
+  <section class="page-hero">
+    <div class="container page-hero-grid about-hero">
+      <div>
+        <p class="eyebrow"><span data-l="en">About</span><span data-l="vi">Giới thiệu</span></p>
+        <h1 data-l="en">Hi, I'm Hung Vo.</h1>
+        <h1 data-l="vi">Chào bạn, mình là Hùng Võ.</h1>
+            <p class="lead" data-l="en">I've worked in supply chain and ecommerce since 2018. I believe a skill is like an order: it only counts once it's delivered. That's why I started Ecom LAB, to package what I've learned and share it with everyone.</p>
+            <p class="lead" data-l="vi">Mình làm việc trong chuỗi cung ứng và thương mại điện tử từ năm 2018. Mình tin rằng kỹ năng cũng giống như đơn hàng: phải giao tận tay thì mới tính là hoàn thành. Vì vậy, mình thành lập Ecom LAB để đóng gói những gì mình đã học và chia sẻ đến mọi người.</p>
+            <div class="hero-actions">
+              <a class="btn btn--secondary" href="https://www.linkedin.com/in/hungvo1803" rel="noopener"><span data-l="en">Connect on LinkedIn</span><span data-l="vi">Kết nối trên LinkedIn</span></a>
+            </div>
+      </div>
+      <div class="about-photo">
+      <img class="ring-photo" src="assets/img/hung-profile.webp" alt="Portrait of Hung Vo, smiling, in a dark shirt with arms crossed" width="1024" height="1536">
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--flip" data-flip>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2><span data-l="en">My Experience</span><span data-l="vi">Kinh nghiệm của tôi</span></h2>
+        </div>
+      </div>
+      <!-- Two timelines on one year scale (2015 to now). Each stop sets --s (start year) and --e (end year); --i sets the order it appears in. -->
+      <div class="journey on-dark" data-reveal>
+        <div class="journey-axis" aria-hidden="true">
+          <span style="--y:2015">2015</span><span style="--y:2017">2017</span><span style="--y:2019">2019</span><span style="--y:2021">2021</span><span style="--y:2023">2023</span><span style="--y:2025">2025</span><span class="journey-now" style="--y:2026.9">Now</span>
+        </div>
+
+        <div class="journey-track">
+          <p class="journey-label"><svg class="icon" aria-hidden="true"><use href="#i-cap"/></svg>Education and mentoring</p>
+          <ol class="journey-line journey-line--below">
+            <li class="stop" style="--s:2015;--e:2019.5;--i:1"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2015–2019</b><strong>Foreign Trade University</strong><span>Business Administration</span></span></li>
+            <li class="stop stop--now" style="--s:2019.5;--e:2026.9;--i:2"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2019–now</b><strong>Student Mentor</strong><span>Vietnam Logistics and Aviation School</span></span></li>
+          </ol>
+        </div>
+
+        <div class="journey-track">
+          <p class="journey-label"><svg class="icon" aria-hidden="true"><use href="#i-briefcase"/></svg>Work</p>
+          <ol class="journey-line">
+            <li class="stop stop--up" style="--s:2018.7;--e:2020.5;--i:3"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2018–2020</b><strong>Decathlon</strong><span>Production Planning</span></span></li>
+            <li class="stop" style="--s:2020.5;--e:2021.5;--i:4"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2020–2021</b><strong>Castrol</strong><span>Supply Planning</span></span></li>
+            <li class="stop stop--up" style="--s:2021.7;--e:2025.2;--i:5"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2021–2025</b><strong>US e-commerce LLC</strong><span>(Yes4All, Homewise)</span><span>New Product Development Planning</span></span></li>
+            <li class="stop stop--now stop--end" style="--s:2025.35;--e:2026.9;--i:6"><span class="stop-bar"></span><span class="stop-dot"></span><span class="stop-text"><b>2025–now</b><strong>Shopee</strong><span>Supply Chain Strategy</span></span></li>
+            <li class="journey-mascot" aria-hidden="true">
+              <svg viewBox="-34 -100 68 102"><g class="journey-hop">
+                <path d="M-14 -44v5M14 -44v5" stroke="#EDE5D5" stroke-width="5" stroke-linecap="round"/>
+                <rect x="-31" y="-98" width="62" height="54" rx="5" fill="#F09070"/>
+                <rect x="-7" y="-98" width="14" height="19" fill="#EDE5D5"/>
+                <circle cx="-12" cy="-65" r="3.6" fill="#0C1A12"/><circle cx="12" cy="-65" r="3.6" fill="#0C1A12"/>
+                <path d="M-6 -58q6 5 12 0" fill="none" stroke="#0C1A12" stroke-width="3" stroke-linecap="round"/>
+              </g></svg>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <!-- One measurable result per work role. Replace each TODO with a real number. -->
+      <ul class="results" data-reveal>
+        <li class="r" style="--i:0"><span class="results-who"><b>Decathlon</b><span>Production Planning</span></span><span class="results-what todo">[TODO: result]</span></li>
+        <li class="r" style="--i:1"><span class="results-who"><b>Castrol</b><span>Supply Planning</span></span><span class="results-what todo">[TODO: result]</span></li>
+        <li class="r" style="--i:2"><span class="results-who"><b>US e-commerce LLC</b><span>New Product Development Planning</span></span><span class="results-what todo">[TODO: result]</span></li>
+        <li class="r" style="--i:3"><span class="results-who"><b>Shopee</b><span>Supply Chain Strategy</span></span><span class="results-what todo">[TODO: result]</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Testimonials come from data/testimonials.json. The section stays hidden until there are 3 or more entries. -->
+  <section class="band" data-testimonials hidden>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2><span data-l="en">What learners say</span><span data-l="vi">Học viên nói gì</span></h2>
+        </div>
+      </div>
+      <ul class="quotes" data-testimonials-list></ul>
+    </div>
+  </section>
+
+  <section class="band band--sunken" id="feedback">
+    <div class="container">
+      <div class="fb-cta">
+        <div>
+          <p class="eyebrow"><span data-l="en">Feedback</span><span data-l="vi">Góp ý</span></p>
+          <h2 data-l="en">Tell me what to fix.</h2>
+          <h2 data-l="vi">Góp ý để khoá học tốt hơn.</h2>
+          <p class="fb-lead"><span data-l="en">Something unclear, a wrong number, a topic you want next?</span><span data-l="vi">Chỗ nào khó hiểu, con số nào sai, chủ đề nào bạn muốn học tiếp?</span></p>
+          <a class="btn btn--primary" href="feedback.html" target="_blank" rel="noopener"><span data-l="en">Send feedback</span><span data-l="vi">Gửi góp ý</span> <span aria-hidden="true">&#8599;</span></a>
+        </div>
+        <div class="contact-line">
+          <p class="eyebrow"><span data-l="en">Contact</span><span data-l="vi">Liên hệ</span></p>
+          <p><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg><a href="mailto:hungvo1803@gmail.com">hungvo1803@gmail.com</a></p>
+          <p><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><a href="https://www.linkedin.com/in/hungvo1803" rel="noopener">LinkedIn</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</Base>

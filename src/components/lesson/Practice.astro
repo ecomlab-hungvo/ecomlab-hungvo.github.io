@@ -1,0 +1,10 @@
+---
+// Standard block 4: the practice task. Inside: an <En>/<Vi> intro, then <Steps> with <Step> and <Prompt>, then <Reflect>.
+interface Props { title_en?: string; title_vi?: string }
+const { title_en = 'Practice', title_vi = 'Thực hành' } = Astro.props;
+---
+<section class="part-section lx-practice">
+  <p class="eyebrow"><span data-l="en">Practice</span><span data-l="vi">Thực hành</span></p>
+  <h2><span data-l="en">{title_en}</span><span data-l="vi">{title_vi}</span></h2>
+  <div class="practice"><slot /></div>
+</section>

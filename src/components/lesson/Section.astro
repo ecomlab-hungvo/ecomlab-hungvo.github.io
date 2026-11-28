@@ -1,0 +1,10 @@
+---
+// One content part: one idea per section, so it fits one screen in present mode.
+interface Props { eyebrow?: string; title_en: string; title_vi: string; mark_en?: string; mark_vi?: string }
+const { eyebrow, title_en, title_vi, mark_en, mark_vi } = Astro.props;
+---
+<section class="part-section">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2><span data-l="en">{title_en}{mark_en && <> <span class="mark">{mark_en}</span></>}</span><span data-l="vi">{title_vi}{mark_vi && <> <span class="mark">{mark_vi}</span></>}</span></h2>
+  <slot />
+</section>

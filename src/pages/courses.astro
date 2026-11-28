@@ -1,0 +1,43 @@
+---
+// Course list. One card per content/courses/<id>/course.json with status "published".
+import Base from '../layouts/Base.astro';
+import T from '../components/T.astro';
+import { courses, coursePath, href } from '../lib/courses';
+const list = await courses();
+const page = {
+  titleEn: 'Free courses | Ecom LAB',
+  titleVi: 'Khoá học miễn phí | Ecom LAB',
+  descEn: 'Free Ecom LAB courses on cross-border ecommerce and Amazon, for newcomers. No sign-up needed.',
+  descVi: 'Các khoá học miễn phí của Ecom LAB về thương mại điện tử xuyên biên giới và Amazon, cho người mới. Không cần đăng ký.',
+  path: 'courses.html'
+};
+---
+<Base {...page}>
+<main id="main" tabindex="-1">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow"><span data-l="en">Free courses</span><span data-l="vi">Khoá học miễn phí</span></p>
+      <h1 data-l="en">Free courses for <span class="mark">newcomers.</span></h1>
+      <h1 data-l="vi">Khoá học miễn phí cho <span class="mark">người mới.</span></h1>
+      <p class="hero-meta"><span data-l="en">No sign-up · No fee · VI / EN</span><span data-l="vi">Không cần đăng ký · Không mất phí · VI / EN</span></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="lcards lcards--home lcards--list" data-reveal>
+        {list.map((c, i) => (
+          <a class="lcard lcard--open on-dark" href={href(coursePath(c))} style={`--i:${i}`}>
+            <span class="lcard-top"><span class="lcard-code">{c.data.code}</span><span class="stamp stamp--success"><span data-l="en">Free</span><span data-l="vi">Miễn phí</span></span></span>
+            <span class="eyebrow"><T en={c.data.card.meta.en} vi={c.data.card.meta.vi} /></span>
+            <h2 class="lcard-h"><T en={c.data.title_en} vi={c.data.title_vi} /></h2>
+            <p class="lcard-p"><T en={c.data.summary_en} vi={c.data.summary_vi} /></p>
+            {c.data.card.points.length > 0 && <ul class="lcard-points">{c.data.card.points.map(p => <li><T en={p.en} vi={p.vi} /></li>)}</ul>}
+            <span class="lcard-foot"><span data-l="en">See the course</span><span data-l="vi">Xem khoá học</span><span aria-hidden="true">&rarr;</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</main>
+</Base>

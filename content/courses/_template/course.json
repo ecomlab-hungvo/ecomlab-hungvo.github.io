@@ -1,0 +1,38 @@
+{
+  "id": "_template",
+  "code": "EL-XXX",
+  "order": 99,
+  "status": "draft",
+  "level": "beginner",
+  "duration": { "en": "TODO: about N minutes", "vi": "TODO: khoảng N phút" },
+  "title_en": "TODO: course title",
+  "title_vi": "TODO: tên khoá học",
+  "summary_en": "TODO: one line on what the learner gets.",
+  "summary_vi": "TODO: một dòng về điều người học nhận được.",
+  "card": {
+    "meta": { "en": "TODO: N lessons · N parts · about N minutes", "vi": "TODO: N bài · N phần · khoảng N phút" },
+    "points": [
+      { "en": "TODO: lesson 1 title", "vi": "TODO: tên bài 1" }
+    ]
+  },
+  "hero": {
+    "eyebrow": { "en": "Free courses · EL-XXX", "vi": "Khoá học miễn phí · EL-XXX" },
+    "title": { "en": "TODO: hero title", "vi": "TODO: tiêu đề" },
+    "title_mark": { "en": "TODO: highlighted words.", "vi": "TODO: chữ tô màu." },
+    "points_lead": { "en": "In this course you'll learn:", "vi": "Trong khoá này, bạn sẽ học:" },
+    "points": [
+      { "en": "TODO: outcome 1", "vi": "TODO: kết quả 1" }
+    ],
+    "meta": { "en": "For complete beginners · No sign-up", "vi": "Dành cho người mới · Không cần đăng ký" }
+  },
+  "receipt": [
+    { "icon": "list", "label": { "en": "Lessons", "vi": "Số bài" }, "value": { "en": "TODO", "vi": "TODO" } },
+    { "icon": "book", "label": { "en": "Languages", "vi": "Ngôn ngữ" }, "value": { "en": "VI / EN", "vi": "VI / EN" }, "plain": true },
+    { "icon": "check", "label": { "en": "Sign-up", "vi": "Đăng ký" }, "value": { "en": "None needed", "vi": "Không cần" } }
+  ],
+  "stats": [],
+  "lessons": [
+    { "n": 1, "icon": "box", "title": { "en": "TODO: lesson 1 title", "vi": "TODO: tên bài 1" }, "points": [ { "en": "TODO: point", "vi": "TODO: ý" } ] }
+  ],
+  "materials": []
+}

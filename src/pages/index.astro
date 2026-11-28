@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+const page = {
+  "titleEn": "Ecom LAB | What happens behind every order",
+  "titleVi": "Ecom LAB | Điều gì diễn ra phía sau mỗi đơn hàng",
+  "descEn": "Ecom LAB: where Hung Vo shares, for free, how to sell cross-border on Amazon, from a product idea to profit. In Vietnamese and English.",
+  "descVi": "Ecom LAB: nơi Hùng Võ chia sẻ miễn phí cách bán hàng xuyên biên giới trên Amazon, từ ý tưởng sản phẩm đến lợi nhuận. Tiếng Việt và tiếng Anh.",
+  "path": ""
+};
+---
+<Base {...page}>
+<main id="main" tabindex="-1">
+  <section class="hero hero--home">
+    <div class="container">
+      <p class="eyebrow hero-eyebrow">Ecommerce, explained</p>
+      <h1 data-l="en">What happens behind <span class="mark">every order.</span></h1>
+      <h1 data-l="vi">Điều gì diễn ra phía sau <span class="mark">mỗi đơn hàng.</span></h1>
+    </div>
+  </section>
+
+  <section class="band band--flip" data-flip>
+    <div class="container">
+      <div class="lcards lcards--home" data-reveal>
+        <a class="lcard lcard--open on-dark" href="about.html" style="--i:0">
+          <span class="lcard-top"><span class="lcard-num">01</span><svg class="icon lcard-ico" aria-hidden="true"><use href="#i-user"/></svg></span>
+          <span class="eyebrow"><span data-l="en">About</span><span data-l="vi">Giới thiệu</span></span>
+          <h2 class="lcard-h"><span data-l="en">Hi, I'm Hung Vo.</span><span data-l="vi">Chào bạn, mình là Hùng Võ.</span></h2>
+          <p class="lcard-p"><span data-l="en">I've worked in supply chain and ecommerce since 2018.</span><span data-l="vi">Mình làm việc trong chuỗi cung ứng và thương mại điện tử từ năm 2018.</span></p>
+          <span class="lcard-foot"><span data-l="en">Meet Hùng</span><span data-l="vi">Về Hùng</span><span aria-hidden="true">&rarr;</span></span>
+        </a>
+        <a class="lcard lcard--open on-dark" href="courses.html" style="--i:1">
+          <span class="lcard-top"><span class="lcard-num">02</span><svg class="icon lcard-ico" aria-hidden="true"><use href="#i-cap"/></svg></span>
+          <span class="eyebrow"><span data-l="en">Free courses</span><span data-l="vi">Khoá học miễn phí</span></span>
+          <h2 class="lcard-h"><span data-l="en">A free course for newcomers.</span><span data-l="vi">Khoá học miễn phí cho người mới.</span></h2>
+          <p class="lcard-p"><span data-l="en">Three short lessons, from a product idea to a profit number. No sign-up, no fee.</span><span data-l="vi">Ba bài ngắn, đi từ ý tưởng sản phẩm đến con số lợi nhuận. Không cần đăng ký, không mất phí.</span></p>
+          <span class="lcard-foot"><span data-l="en">See the courses</span><span data-l="vi">Xem các khoá học</span><span aria-hidden="true">&rarr;</span></span>
+        </a>
+        <a class="lcard lcard--open on-dark" href="resources.html" style="--i:2">
+          <span class="lcard-top"><span class="lcard-num">03</span><svg class="icon lcard-ico" aria-hidden="true"><use href="#i-doc"/></svg></span>
+          <span class="eyebrow"><span data-l="en">Free resources</span><span data-l="vi">Tài nguyên miễn phí</span></span>
+          <h2 class="lcard-h"><span data-l="en">Free resources for real work.</span><span data-l="vi">Tài nguyên miễn phí cho việc thật.</span></h2>
+          <p class="lcard-p"><span data-l="en">Lessons and skills from my work, kept on Notion.</span><span data-l="vi">Bài học và kỹ năng từ công việc của mình, lưu trên Notion.</span></p>
+          <span class="lcard-foot"><span data-l="en">Browse resources</span><span data-l="vi">Xem tài nguyên</span><span aria-hidden="true">&rarr;</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+</Base>

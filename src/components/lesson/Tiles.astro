@@ -1,0 +1,6 @@
+---
+// A row of 2 to 4 tiles. Each child is a <Tile>.
+interface Props { cols?: 3 | 4 }
+const { cols = 3 } = Astro.props;
+---
+<div class={cols === 4 ? 'v-tiles v-tiles--4' : 'v-tiles'} data-reveal><slot /></div>

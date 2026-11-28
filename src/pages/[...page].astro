@@ -1,0 +1,121 @@
+---
+/* One template for every course page and every lesson page.
+   Adding a course = adding content/courses/<id>/. No new page code. */
+import Base from '../layouts/Base.astro';
+import T from '../components/T.astro';
+import CoursePage from '../components/CoursePage.astro';
+import * as Lx from '../components/lesson';
+import { render } from 'astro:content';
+import { courses, lessonsOf, coursePath, lessonPath, href, agenda, type Course, type Lesson } from '../lib/courses';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const course of await courses()) {
+    const lessons = await lessonsOf(course.data.id);
+    paths.push({ params: { page: coursePath(course) }, props: { kind: 'course', course, lessons } });
+    lessons.forEach((lesson, i) => paths.push({
+      params: { page: lessonPath(lesson) },
+      props: { kind: 'lesson', course, lessons, lesson, prev: lessons[i - 1], next: lessons[i + 1] }
+    }));
+  }
+  return paths;
+}
+
+interface Props { kind: 'course' | 'lesson'; course: Course; lessons: Lesson[]; lesson?: Lesson; prev?: Lesson; next?: Lesson }
+const { kind, course, lessons, lesson, prev, next } = Astro.props;
+const c = course.data;
+
+// Legacy EL-101 bodies: raw HTML next to the .mdx file, copied word for word
+const legacy = import.meta.glob('../../content/courses/*/lessons/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+
+let page = { titleEn: '', titleVi: '', descEn: '', descVi: '', path: '' };
+let Content: any = null;
+let legacyHtml = '';
+if (kind === 'course') {
+  page = {
+    titleEn: c.page_title_en ?? `${c.code}: ${c.title_en} | Ecom LAB`,
+    titleVi: c.page_title_vi ?? `${c.code}: ${c.title_vi} | Ecom LAB`,
+    descEn: c.page_desc_en ?? c.summary_en, descVi: c.page_desc_vi ?? c.summary_vi,
+    path: href(coursePath(course)).slice(1)
+  };
+} else if (lesson) {
+  const l = lesson.data;
+  page = {
+    titleEn: l.page_title_en ?? `${l.part} ${l.title_en} | Ecom LAB`,
+    titleVi: l.page_title_vi ?? `${l.part} ${l.title_vi} | Ecom LAB`,
+    descEn: l.page_desc_en ?? l.lead_en, descVi: l.page_desc_vi ?? l.lead_vi,
+    path: href(lessonPath(lesson)).slice(1)
+  };
+  if (l.legacy_html) {
+    const key = Object.keys(legacy).find(k => k.endsWith(`/${l.course}/lessons/${l.legacy_html}`));
+    if (!key) throw new Error(`Missing ${l.legacy_html} for lesson ${l.id}`);
+    legacyHtml = legacy[key];
+  } else {
+    Content = (await render(lesson)).Content;
+  }
+}
+const l = lesson?.data;
+const courseHref = href(coursePath(course));
+---
+{kind === 'course' && (
+  <Base {...page}>
+    <CoursePage course={course} lessons={lessons} />
+  </Base>
+)}
+{kind === 'lesson' && l && (
+  <Base {...page} noDark before={['agenda']} after={l.scripts}>
+<main id="main" tabindex="-1" class="lesson-shell" data-agenda={l.id}>
+  <div class="lesson-main">
+    <article class="lesson-inner" id="content" data-lesson={l.id}>
+      <header class="part-head">
+        <p class="eyebrow"><T en={l.eyebrow_en ?? `Lesson ${l.lesson} · Part ${l.part} · ${l.minutes} min`} vi={l.eyebrow_vi ?? `Bài ${l.lesson} · Phần ${l.part} · ${l.minutes} phút`} /></p>
+        <h1><T html en={l.heading_en ?? l.title_en} vi={l.heading_vi ?? l.title_vi} /></h1>
+        <p class="lead" data-l="en" set:html={l.lead_en} />
+        <p class="lead" data-l="vi" set:html={l.lead_vi} />
+      </header>
+
+      <section class="part-section">
+        {l.draft_note && <p class="draft-note"><span data-l="en">Draft: Hung still needs to review this content. The video is coming soon.</span><span data-l="vi">Bản nháp: Hùng vẫn cần duyệt lại nội dung. Video sắp ra mắt.</span></p>}
+        <div class="video on-dark" data-youtube={l.video} data-video-title={l.video_title ?? l.title_en}>
+          <div>
+            <svg class="icon" aria-hidden="true"><use href="#i-live"/></svg>
+            <strong><span data-l="en">Video coming soon</span><span data-l="vi">Video sắp ra mắt</span></strong>
+            <p data-l="en">The notes below cover this part in the meantime.</p>
+            <p data-l="vi">Trong lúc chờ, bạn có thể đọc ghi chú bên dưới.</p>
+          </div>
+        </div>
+      </section>
+
+      {legacyHtml ? <Fragment set:html={legacyHtml} /> : <Content components={Lx} />}
+
+      {l.feedback === 'lesson-end' && (
+        <div class="fb-box">
+          <p><strong><span data-l="en">End of Lesson {l.lesson}</span><span data-l="vi">Hết Bài {l.lesson}</span></strong><span data-l="en">Was this lesson clear? Tell me what to fix.</span><span data-l="vi">Bài này đã rõ chưa? Góp ý để mình sửa nhé.</span></p>
+          <a class="btn btn--primary" href={`/feedback.html?about=lesson-${l.lesson}`} target="_blank" rel="noopener"><span data-l="en">Send feedback</span><span data-l="vi">Gửi góp ý</span> <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      )}
+      {l.feedback === 'part' && (
+        <div class="fb-box">
+          <p><strong><span data-l="en">Was this part clear?</span><span data-l="vi">Phần này đã rõ chưa?</span></strong><span data-l="en">Tell me what to fix.</span><span data-l="vi">Góp ý để mình sửa nhé.</span></p>
+          <a class="btn btn--primary" href={`/feedback.html?about=lesson-${l.lesson}`} target="_blank" rel="noopener"><span data-l="en">Send feedback</span><span data-l="vi">Gửi góp ý</span> <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      )}
+
+      <div class="lesson-actions">
+        <span class="stamp stamp--success done-state"><span data-l="en">Delivered</span><span data-l="vi">Đã giao</span></span>
+        <button class="btn btn--primary" type="button" data-toggle-done={l.id}><span data-l="en">Mark as delivered / undo</span><span data-l="vi">Đánh dấu đã giao / hoàn tác</span></button>
+      </div>
+      <nav class="part-nav" aria-label="Parts" data-aria-vi="Các phần">
+        {prev
+          ? <a href={href(lessonPath(prev))}><span class="eyebrow"><span data-l="en">&larr; Previous</span><span data-l="vi">&larr; Phần trước</span></span><strong><span data-l="en">{prev.data.part} {prev.data.heading_en ?? prev.data.title_en}</span><span data-l="vi">{prev.data.part} {prev.data.heading_vi ?? prev.data.title_vi}</span></strong></a>
+          : <a href={courseHref}><span class="eyebrow"><span data-l="en">&larr; Back</span><span data-l="vi">&larr; Quay lại</span></span><strong><span data-l="en">Course overview</span><span data-l="vi">Tổng quan khoá học</span></strong></a>}
+        {next
+          ? <a class="next" href={href(lessonPath(next))}><span class="eyebrow"><span data-l="en">Next &rarr;</span><span data-l="vi">Tiếp theo &rarr;</span></span><strong><span data-l="en">{next.data.part} {next.data.heading_en ?? next.data.title_en}</span><span data-l="vi">{next.data.part} {next.data.heading_vi ?? next.data.title_vi}</span></strong></a>
+          : <a class="next" href={courseHref}><span class="eyebrow"><span data-l="en">Course complete</span><span data-l="vi">Hoàn thành khoá học</span></span><strong><span data-l="en">Back to the course &rarr;</span><span data-l="vi">Về trang khoá học &rarr;</span></strong></a>}
+      </nav>
+    </article>
+  </div>
+</main>
+    <script is:inline slot="before-scripts" set:html={`window.ECOM_COURSE = ${JSON.stringify(agenda(course, lessons))};`} />
+  </Base>
+)}

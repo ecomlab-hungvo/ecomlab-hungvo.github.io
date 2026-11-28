@@ -1,0 +1,9 @@
+---
+// One piece of text in both languages. The language switch shows one of them.
+// html: true when the text holds inline markup (entities, <span class="mark">).
+interface Props { en: string; vi: string; html?: boolean }
+const { en, vi, html = false } = Astro.props;
+---
+{html
+  ? <><span data-l="en" set:html={en} /><span data-l="vi" set:html={vi} /></>
+  : <><span data-l="en">{en}</span><span data-l="vi">{vi}</span></>}

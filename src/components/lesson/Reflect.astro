@@ -1,0 +1,9 @@
+---
+// Closing question of a practice task.
+interface Props { title_en?: string; title_vi?: string }
+const { title_en = 'Write down one sentence', title_vi = 'Ghi lại một câu' } = Astro.props;
+---
+<div class="ai-reflect">
+  <p class="ai-step-title"><span data-l="en">{title_en}</span><span data-l="vi">{title_vi}</span></p>
+  <slot />
+</div>

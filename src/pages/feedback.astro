@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+const page = {
+  "titleEn": "Feedback for Ecom LAB | Ecom LAB",
+  "titleVi": "Góp ý cho Ecom LAB | Ecom LAB",
+  "descEn": "Send feedback on Ecom LAB's free course and resources: what was clear, what to fix, what you want next.",
+  "descVi": "Gửi góp ý cho khoá học và tài nguyên miễn phí của Ecom LAB: chỗ nào rõ, chỗ nào cần sửa, bạn muốn học gì tiếp.",
+  "path": "feedback.html"
+};
+---
+<Base {...page} after={["feedback"]}>
+<main id="main" tabindex="-1">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow"><span data-l="en">Feedback</span><span data-l="vi">Góp ý</span></p>
+      <h1 data-l="en">Tell me what to <span class="mark">fix.</span></h1>
+      <h1 data-l="vi">Góp ý để khoá học <span class="mark">tốt hơn.</span></h1>
+      <p class="hero-meta"><span data-l="en">2 minutes · No sign-up · Google Form</span><span data-l="vi">2 phút · Không cần đăng ký · Google Form</span></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="gform">
+        <p class="fb-lead"><span data-l="en">Something unclear, a wrong number, a topic you want next? Every note helps me make the next version better.</span><span data-l="vi">Chỗ nào khó hiểu, con số nào sai, chủ đề nào bạn muốn học tiếp? Mỗi góp ý giúp bản sau tốt hơn.</span></p>
+        <!-- The Google Form is set in assets/js/feedback.js (FORM). Links can preselect the topic: feedback.html?about=lesson-1 -->
+        <iframe class="gform-frame" data-gform title="Ecom LAB feedback form" loading="lazy">Loading…</iframe>
+        <p class="gform-alt"><span data-l="en">Form not showing?</span><span data-l="vi">Form không hiện?</span> <a data-gform-link href="https://docs.google.com/forms/d/e/1FAIpQLScubgsH7WBd4re-y5SwnFQgUuGA8ab63qUbH8563UYwPCgSCg/viewform" target="_blank" rel="noopener"><span data-l="en">Open it in Google Forms</span><span data-l="vi">Mở trong Google Forms</span> <span aria-hidden="true">&#8599;</span></a></p>
+      </div>
+    </div>
+  </section>
+</main>
+</Base>

@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+const page = {
+  "titleEn": "Free resources | Ecom LAB",
+  "titleVi": "Tài nguyên miễn phí | Ecom LAB",
+  "descEn": "Free resources from Hung Vo's real work in supply chain, ecommerce and career: templates, checklists and articles on Notion.",
+  "descVi": "Tài nguyên miễn phí từ công việc thật của Hùng Võ về chuỗi cung ứng, thương mại điện tử và sự nghiệp: mẫu, checklist và bài viết trên Notion.",
+  "path": "resources.html"
+};
+---
+<Base {...page} after={["data"]}>
+<main id="main" tabindex="-1">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow"><span data-l="en">Free resources</span><span data-l="vi">Tài nguyên miễn phí</span></p>
+      <h1 data-l="en">Free resources for <span class="mark">real work.</span></h1>
+      <h1 data-l="vi">Tài nguyên miễn phí cho <span class="mark">việc thật.</span></h1>
+      <p class="hero-meta"><span data-l="en">Lessons and skills from my work · Hosted on Notion</span><span data-l="vi">Bài học và kỹ năng từ công việc của mình · Lưu trên Notion</span></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container" data-resources>
+      <!-- Cards come from data/resources.json. To add a resource, add one entry there. -->
+      <div class="res-filter" role="group" aria-label="Filter by topic" data-aria-vi="Lọc theo chủ đề" data-resources-filter hidden>
+        <button type="button" data-topic="all" aria-pressed="true"><span data-l="en">All</span><span data-l="vi">Tất cả</span></button>
+        <button type="button" data-topic="Supply chain" aria-pressed="false"><span data-l="en">Supply chain</span><span data-l="vi">Chuỗi cung ứng</span></button>
+        <button type="button" data-topic="Ecommerce" aria-pressed="false"><span data-l="en">Ecommerce</span><span data-l="vi">Thương mại điện tử</span></button>
+        <button type="button" data-topic="Career" aria-pressed="false"><span data-l="en">Career</span><span data-l="vi">Sự nghiệp</span></button>
+      </div>
+      <ul class="res-list" data-resources-list aria-live="polite"></ul>
+      <div class="res-empty" data-resources-empty hidden>
+        <p><span data-l="en">The first resources are on the way. Meanwhile, everything lives in my Notion hub.</span><span data-l="vi">Những tài nguyên đầu tiên đang được chuẩn bị. Trong lúc chờ, mọi thứ đều nằm trong trang Notion của mình.</span></p>
+        <a class="btn btn--primary" href="[NOTION_RESOURCES_URL]" target="_blank" rel="noopener"><span data-l="en">Open the Notion hub</span><span data-l="vi">Mở trang Notion</span> <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+</Base>
