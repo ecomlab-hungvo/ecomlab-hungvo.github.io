@@ -1,48 +1,22 @@
-/* Feedback form: the site has no server, so it opens the learner's email app with the message filled in.
-   Links can preselect the topic: feedback.html?about=lesson-1 (course, lesson-1, lesson-2, lesson-3, resources, website). */
+/* Feedback page: shows the Google Form, with the topic preselected from the link.
+   Example: feedback.html?about=lesson-1 (course, lesson-1, lesson-2, lesson-3, resources, website). */
 (function () {
-  var form = document.querySelector('[data-feedback]');
-  if (!form) return;
-  var TO = 'hungvo1803@gmail.com';
-  var root = document.documentElement;
+  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScubgsH7WBd4re-y5SwnFQgUuGA8ab63qUbH8563UYwPCgSCg/viewform';
+  var TOPIC_FIELD = 'entry.2100177769';
+  // Must match the choices in the Google Form exactly.
+  var TOPICS = {
+    course: 'Whole course / Cả khoá học',
+    'lesson-1': 'Lesson 1 / Bài 1',
+    'lesson-2': 'Lesson 2 / Bài 2',
+    'lesson-3': 'Lesson 3 / Bài 3',
+    resources: 'Resources / Tài nguyên',
+    website: 'Website'
+  };
+  var topic = TOPICS[new URLSearchParams(location.search).get('about')];
+  var query = topic ? 'usp=pp_url&' + TOPIC_FIELD + '=' + encodeURIComponent(topic) : '';
 
-  var opts = form.querySelectorAll('option[data-vi]');
-  opts.forEach(function (o) { o.dataset.en = o.textContent; });
-  function localize() {
-    var vi = root.dataset.lang !== 'en';
-    opts.forEach(function (o) { o.textContent = vi ? o.dataset.vi : o.dataset.en; });
-  }
-  localize();
-  new MutationObserver(localize).observe(root, { attributes: true, attributeFilter: ['data-lang'] });
-
-  var PRESET = { course: 'Whole course', 'lesson-1': 'Lesson 1', 'lesson-2': 'Lesson 2', 'lesson-3': 'Lesson 3', resources: 'Resources', website: 'Website' };
-  var about = new URLSearchParams(location.search).get('about');
-  if (PRESET[about]) form.elements.about.value = PRESET[about];
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var rate = form.querySelector('input[name="rate"]:checked');
-    var good = form.elements.good.value.trim();
-    var fix = form.elements.fix.value.trim();
-    var err = form.querySelector('[data-fb-err]');
-    err.hidden = !!(rate || good || fix);
-    if (!err.hidden) { form.elements.fix.focus(); return; }
-    var topic = form.elements.about.value;
-    var body = [
-      'About: ' + topic,
-      'Useful (1-5): ' + (rate ? rate.value : '-'),
-      '',
-      'What worked well:',
-      good || '-',
-      '',
-      'What to fix or add:',
-      fix || '-',
-      '',
-      'Name: ' + (form.elements.name.value.trim() || '-'),
-      'Reply to: ' + (form.elements.contact.value.trim() || '-')
-    ].join('\n');
-    window.location.href = 'mailto:' + TO +
-      '?subject=' + encodeURIComponent('Ecom LAB feedback: ' + topic) +
-      '&body=' + encodeURIComponent(body);
-  });
+  var frame = document.querySelector('[data-gform]');
+  if (frame) frame.src = FORM + '?embedded=true' + (query ? '&' + query : '');
+  var link = document.querySelector('[data-gform-link]');
+  if (link) link.href = FORM + (query ? '?' + query : '');
 })();

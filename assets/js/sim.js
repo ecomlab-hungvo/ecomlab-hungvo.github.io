@@ -52,7 +52,7 @@
 
   function money(n, d) { if (n === null || !isFinite(n)) return '–'; var s = Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: d === 0 ? 0 : 2, maximumFractionDigits: d === 0 ? 0 : 2 }); return (n < 0 ? '−$' : '$') + s; }
   function pct(n) { return isFinite(n) ? (n * 100).toFixed(0) + '%' : '–'; }
-  function lang() { return document.documentElement.lang === 'en' ? 'en' : 'vi'; }
+  function lang() { return document.documentElement.lang === 'vi' ? 'vi' : 'en'; }
   function both(en, vi) { return '<span data-l="en">' + en + '</span><span data-l="vi">' + vi + '</span>'; }
   function monthLabel(n) { return n === null ? both('Not within the first order', 'Chưa hoàn vốn trong lô đầu') : both('Month ' + n, 'Tháng ' + n); }
 

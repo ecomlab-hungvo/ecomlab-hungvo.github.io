@@ -52,10 +52,10 @@
 
   /* Language switch */
   var root = document.documentElement;
-  // Vietnamese is the default: <title> holds the Vietnamese title and data-title-en the English one.
-  var titleVi = document.title;
+  // English is the default: <title> and the meta description hold English, data-title-vi and data-desc-vi hold Vietnamese.
+  var titleEn = document.title;
   var metaDesc = document.querySelector('meta[name="description"]');
-  var descVi = metaDesc ? metaDesc.getAttribute('content') : '';
+  var descEn = metaDesc ? metaDesc.getAttribute('content') : '';
 
   // Header: mark the section this page belongs to. Course and lesson pages count as Courses.
   var page = location.pathname.split('/').pop() || 'index.html';
@@ -66,8 +66,8 @@
   function setLang(lang) {
     root.lang = lang;
     root.dataset.lang = lang;
-    document.title = lang === 'en' && root.dataset.titleEn ? root.dataset.titleEn : titleVi;
-    if (metaDesc && root.dataset.descEn) metaDesc.setAttribute('content', lang === 'en' ? root.dataset.descEn : descVi);
+    document.title = lang === 'vi' && root.dataset.titleVi ? root.dataset.titleVi : titleEn;
+    if (metaDesc && root.dataset.descVi) metaDesc.setAttribute('content', lang === 'vi' ? root.dataset.descVi : descEn);
     document.querySelectorAll('[data-set-lang]').forEach(function (btn) {
       btn.setAttribute('aria-pressed', String(btn.dataset.setLang === lang));
     });
@@ -82,7 +82,7 @@
       setLang(btn.dataset.setLang);
     });
   });
-  setLang(root.dataset.lang === 'en' ? 'en' : 'vi');
+  setLang(root.dataset.lang === 'vi' ? 'vi' : 'en');
 
 
   /* Video slots. Put a YouTube link or id in data-youtube and the video appears. */
@@ -278,7 +278,7 @@
       '<span class="present-count" aria-live="polite"></span>' +
       '<button type="button" data-p="next" aria-label="Next" data-aria-vi="Tiếp theo">&#8250;</button>' +
       '<button type="button" data-p="exit">Esc</button></div>');
-    setLang(root.lang === 'en' ? 'en' : 'vi');
+    setLang(root.lang === 'vi' ? 'vi' : 'en');
     var hud = document.querySelector('.present-hud');
     var count = hud.querySelector('.present-count');
     var idleTimer;
