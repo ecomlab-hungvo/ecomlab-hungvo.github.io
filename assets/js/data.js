@@ -42,7 +42,7 @@
         var points = (c.points || []).map(function (p) { return '<li>' + both(p.en, p.vi) + '</li>'; }).join('');
         return '<' + tag + ' class="lcard ' + (open ? 'lcard--open on-dark' : 'lcard--soon') + '"' +
           (open ? ' href="' + esc(c.url) + '"' : '') + ' style="--i:' + i + '">' +
-          '<span class="lcard-top"><span class="lcard-num">' + esc(c.code) + '</span>' +
+          '<span class="lcard-top"><span class="lcard-code">' + esc(c.code) + '</span>' +
           '<span class="stamp' + (open ? ' stamp--success' : '') + '">' + (open ? both('Free', 'Miễn phí') : both('Soon', 'Sắp có')) + '</span></span>' +
           '<span class="eyebrow">' + both(c.meta_en, c.meta_vi) + '</span>' +
           '<h2 class="lcard-h">' + both(c.title_en, c.title_vi) + '</h2>' +
