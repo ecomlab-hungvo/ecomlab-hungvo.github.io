@@ -24,6 +24,7 @@ Hùng Võ's personal-branding site on supply chain and cross-border ecommerce, l
 | `course.html` | EL-101 detail: lessons, all 12 parts, course materials, feedback block. |
 | `lesson-1-1.html` … `lesson-3-3.html` | The 12 parts of EL-101. The last part of each lesson (1.3, 2.5, 3.3) ends with a feedback block. |
 | `resources.html` | Notion resource cards from `data/resources.json`, with a topic filter. |
+| `feedback.html` | Feedback form. No server: it opens the learner's email app addressed to hungvo1803@gmail.com. Links can preselect the topic with `?about=course`, `lesson-1`, `lesson-2`, `lesson-3`, `resources` or `website`. |
 
 Header nav on every page: About · Courses · Resources · VI/EN. The header and footer are copied into every page, so change them in all pages. `main.js` marks the current section; course and lesson pages count as Courses.
 
@@ -33,6 +34,7 @@ Header nav on every page: About · Courses · Resources · VI/EN. The header and
 - `assets/js/data.js`: renders lists from `data/`. Loaded on about, courses and resources.
 - `assets/js/agenda.js`: the list of lesson and part titles for the left agenda on part pages. Loaded before main.js on lesson pages.
 - `assets/js/sim.js`: profit simulator in 3.2 and 3.3.
+- `assets/js/feedback.js`: the feedback form on `feedback.html`.
 
 `data/*.json` files are loaded with `fetch()`, so preview through a local server (the `ecom-lab` preview, port 4173), not by opening the file directly.
 
@@ -100,7 +102,6 @@ The "What learners say" section on About stays hidden until there are **3 or mor
 
 Search the repo for `[TODO` and for these tokens before publishing:
 
-- `[FEEDBACK_FORM_URL]`: feedback buttons on About, `course.html`, and lessons 1.3, 2.5, 3.3.
 - `[NOTION_RESOURCES_URL]`: empty-state button on `resources.html`.
 - `[TODO: result]`: one measurable result per work role on About.
 - `[TODO: slides link]`, `[TODO: spreadsheet link]`: course materials on `course.html`.
