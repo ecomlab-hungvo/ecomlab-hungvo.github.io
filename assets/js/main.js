@@ -54,10 +54,20 @@
   var root = document.documentElement;
   // Vietnamese is the default: <title> holds the Vietnamese title and data-title-en the English one.
   var titleVi = document.title;
+  var metaDesc = document.querySelector('meta[name="description"]');
+  var descVi = metaDesc ? metaDesc.getAttribute('content') : '';
+
+  // Header: mark the section this page belongs to. Course and lesson pages count as Courses.
+  var page = location.pathname.split('/').pop() || 'index.html';
+  var section = /^(course|lesson-)/.test(page) ? 'courses.html' : page;
+  document.querySelectorAll('.nav a').forEach(function (a) {
+    if (a.getAttribute('href') === section) a.setAttribute('aria-current', 'page');
+  });
   function setLang(lang) {
     root.lang = lang;
     root.dataset.lang = lang;
     document.title = lang === 'en' && root.dataset.titleEn ? root.dataset.titleEn : titleVi;
+    if (metaDesc && root.dataset.descEn) metaDesc.setAttribute('content', lang === 'en' ? root.dataset.descEn : descVi);
     document.querySelectorAll('[data-set-lang]').forEach(function (btn) {
       btn.setAttribute('aria-pressed', String(btn.dataset.setLang === lang));
     });
@@ -74,41 +84,6 @@
   });
   setLang(root.dataset.lang === 'en' ? 'en' : 'vi');
 
-  /* Hero slider: moves on its own until someone uses the controls */
-  document.querySelectorAll('[data-slider]').forEach(function (slider) {
-    var slides = Array.prototype.slice.call(slider.querySelectorAll('.slide'));
-    var tabs = Array.prototype.slice.call(slider.querySelectorAll('.slider-tab'));
-    var bar = slider.querySelector('.slider-bar');
-    var current = 0;
-    var timer;
-
-    function go(index) {
-      current = (index + slides.length) % slides.length;
-      slides.forEach(function (slide, i) {
-        slide.classList.toggle('is-on', i === current);
-        slide.setAttribute('aria-hidden', String(i !== current));
-      });
-      tabs.forEach(function (tab, i) { tab.setAttribute('aria-current', String(i === current)); });
-    }
-    function stop() {
-      clearInterval(timer);
-      timer = null;
-      bar.classList.remove('is-playing');
-    }
-    function start() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      bar.classList.add('is-playing');
-      timer = setInterval(function () { go(current + 1); }, 15000);
-    }
-    tabs.forEach(function (tab, i) {
-      tab.addEventListener('click', function () { stop(); go(i); });
-    });
-    slider.querySelector('[data-prev]').addEventListener('click', function () { stop(); go(current - 1); });
-    slider.querySelector('[data-next]').addEventListener('click', function () { stop(); go(current + 1); });
-    slider.addEventListener('focusin', stop);
-    go(0);
-    start();
-  });
 
   /* Video slots. Put a YouTube link or id in data-youtube and the video appears. */
   function youtubeId(value) {
