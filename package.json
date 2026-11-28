@@ -1,0 +1,16 @@
+{
+  "name": "ecom-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port 4173",
+    "build": "astro build",
+    "preview": "astro preview --port 4173",
+    "test": "playwright test",
+    "check": "astro build && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "astro": "^5.18.2"
+  }
+}
