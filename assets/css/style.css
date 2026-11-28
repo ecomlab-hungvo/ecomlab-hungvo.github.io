@@ -763,7 +763,7 @@ a.lcard:hover .lcard-foot span:last-child { transform: translateX(4px); }
 }
 
 /* Very narrow phones: the Vietnamese tab labels need the logo text to give way */
-@media (max-width: 400px) {
+@media (max-width: 640px) {
   .site-header .logo { font-size: 0; gap: 0; }
 }
 @media (max-width: 359px) {
@@ -2730,3 +2730,9 @@ html.is-presenting.is-idle, html.is-presenting.is-idle * { cursor: none; }
 .lcard-code { padding: 6px 10px; border-radius: var(--radius-sm); background: var(--primary); color: var(--on-primary); font: 700 var(--fs-sm)/1 var(--font-mono); letter-spacing: .04em; }
 [hidden] { display: none !important; }
 main:focus { outline: none; }
+/* Phones: logo mark, three nav links and the VI/EN switch on one row */
+@media (max-width: 480px) {
+  .site-header .container { gap: 10px; }
+  .nav { gap: 10px; }
+  .lang button { padding-inline: 9px; }
+}
