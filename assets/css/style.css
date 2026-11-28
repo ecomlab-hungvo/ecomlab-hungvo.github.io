@@ -2744,3 +2744,135 @@ main:focus { outline: none; }
 .gform-alt { font-size: var(--fs-sm); color: var(--text-muted); text-align: center; }
 .gform-alt a { color: var(--accent-text); font-weight: 600; }
 @media (max-width: 599px) { .gform-frame { height: 1700px; } }
+
+/* =====================================================================
+   Theme 2026-11-28: one cream paper page that turns deep forest when you
+   scroll into a [data-flip] zone, a quiet map-dot background, a soft glow
+   that follows the mouse, and springy hovers. Lesson pages (html[data-no-dark])
+   stay light so screen recordings look the same.
+   --flip goes 0 (paper) to 1 (dark). main.js sets it while scrolling;
+   html[data-theme="dark"] pins it to 1.
+   ===================================================================== */
+:root {
+  --flip: 0;
+  --ease: cubic-bezier(.22, .8, .24, 1);
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+  --L-surface: #EDE5D5;  --D-surface: #0E2419;
+  --L-sunken: #E2D8C4;   --D-sunken: #0A1C13;
+  --L-elevated: #F7F2E8; --D-elevated: #163526;
+  --L-ink: #173F2C;      --D-ink: #EDE5D5;
+  --L-muted: #4A5E52;    --D-muted: #B9C6B8;
+  --L-border: #D3C8B2;   --D-border: #2E4D3D;
+  --L-control: #6B7D70;  --D-control: #7FA08C;
+  --L-accent: #9E4227;   --D-accent: #F5A98E;
+  --L-step: #F6D9CD;     --D-step: #3A3326;
+}
+html[data-theme="dark"] body { --flip: 1; }
+body {
+  --t: calc(var(--flip) * 100%);
+  --surface: color-mix(in oklab, var(--L-surface), var(--D-surface) var(--t));
+  --surface-sunken: color-mix(in oklab, var(--L-sunken), var(--D-sunken) var(--t));
+  --surface-elevated: color-mix(in oklab, var(--L-elevated), var(--D-elevated) var(--t));
+  --text-primary: color-mix(in oklab, var(--L-ink), var(--D-ink) var(--t));
+  --text-muted: color-mix(in oklab, var(--L-muted), var(--D-muted) var(--t));
+  --border: color-mix(in oklab, var(--L-border), var(--D-border) var(--t));
+  --border-control: color-mix(in oklab, var(--L-control), var(--D-control) var(--t));
+  --accent-text: color-mix(in oklab, var(--L-accent), var(--D-accent) var(--t));
+  --step-active: color-mix(in oklab, var(--L-step), var(--D-step) var(--t));
+  --dot: color-mix(in srgb, rgba(29, 76, 53, .30), rgba(237, 229, 213, .22) var(--t));
+}
+html:not([data-no-dark]) .band--sunken { background: transparent; }
+
+/* Background: map dots, faint shipping routes, paper grain */
+.bg-field { position: fixed; inset: -24px; z-index: -2; pointer-events: none; will-change: transform; transition: transform .6s var(--ease); }
+.bg-dots { position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, var(--dot) 1.1px, transparent 1.6px); background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 20%, #000 35%, transparent 85%); mask-image: radial-gradient(120% 90% at 50% 20%, #000 35%, transparent 85%); }
+.bg-routes { position: absolute; inset: 0; width: 100%; height: 100%; opacity: calc(.32 + var(--flip) * .18); }
+.bg-routes path { fill: none; stroke: #F09070; stroke-width: 1.4; stroke-dasharray: 2 9; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.bg-routes circle { fill: #F09070; }
+body::after { content: ""; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: calc(.07 + var(--flip) * .05); mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"); }
+.bg-glow { position: fixed; left: 0; top: 0; z-index: -1; width: 760px; height: 760px; margin: -380px 0 0 -380px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(240, 144, 112, .2), transparent); opacity: 0; transition: opacity .5s var(--ease); will-change: transform; }
+.bg-glow.is-live { opacity: 1; }
+main, .footer { position: relative; }
+
+/* Header: paper bar that flips with the page */
+.site-header { background: color-mix(in srgb, var(--surface) 86%, transparent); color: var(--text-primary); border-bottom: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2); backdrop-filter: blur(10px) saturate(1.2); }
+.site-header .logo { color: var(--text-primary); }
+.site-header .logo-mark { border-color: var(--accent-text); color: var(--accent-text); transition: transform .4s var(--spring); }
+.site-header .logo:hover .logo-mark { transform: rotate(8deg) scale(1.08); }
+.nav a { position: relative; color: var(--text-muted); transition: color .2s; }
+.nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 2px; border-radius: 2px; background: var(--primary); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--spring); }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--text-primary); }
+.nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); }
+.lang { border-color: var(--border-control); }
+.lang button { color: var(--text-muted); }
+.lang button:hover { background: var(--surface-sunken); }
+.theme-toggle { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border: 1px solid var(--border-control); border-radius: 999px; background: transparent; color: var(--text-primary); cursor: pointer; transition: transform .35s var(--spring), border-color .2s; }
+.theme-toggle:hover { transform: rotate(-14deg) scale(1.06); border-color: var(--accent-text); }
+.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .tt-moon, html[data-theme="dark"] .theme-toggle .tt-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .tt-moon { display: block; }
+html[data-no-dark] .theme-toggle { display: none; }
+
+/* Heroes sit on the paper */
+.hero, .page-hero { background: transparent; color: var(--text-primary); }
+.hero--home { display: grid; align-content: center; min-height: calc(100svh - 67px); padding: 72px 0; }
+.hero .hero-eyebrow, .page-hero .eyebrow { color: var(--accent-text); }
+.hero-points-lead, .hero-meta { color: var(--text-muted); }
+.hero-points li { color: var(--text-primary); }
+.page-hero { padding: 72px 0 56px; }
+
+/* Hand-drawn highlighter that sweeps in when it scrolls into view */
+.mark, .band--sunken .mark, .on-dark .mark {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath fill='%23F09070' fill-opacity='.55' d='M4 21 C40 17 92 20 140 16.5 C166 15 186 17.5 197 15 C195 21 198 26 195.5 30 C197 33 195 36 196 38 C150 39.5 102 36.5 56 38.5 C34 39.5 16 37.5 3 39 C5.5 34 2 29 4.5 25.5 C3 24 3.5 22.5 4 21Z'/%3E%3C/svg%3E") no-repeat 0 70% / 100% 78%;
+  color: inherit;
+}
+.on-dark .mark { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath fill='%23F09070' fill-opacity='.8' d='M4 21 C40 17 92 20 140 16.5 C166 15 186 17.5 197 15 C195 21 198 26 195.5 30 C197 33 195 36 196 38 C150 39.5 102 36.5 56 38.5 C34 39.5 16 37.5 3 39 C5.5 34 2 29 4.5 25.5 C3 24 3.5 22.5 4 21Z'/%3E%3C/svg%3E"); }
+.js .mark { background-size: 0% 78%; transition: background-size .8s var(--ease) .15s; }
+.js .mark.is-marked { background-size: 100% 78%; }
+.js .on-dark h1 .mark { animation: none; }
+
+/* Springy hovers */
+.btn { transition: background-color .15s, border-color .15s, transform .3s var(--spring); }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn--secondary { color: var(--text-primary); border-color: var(--border-control); }
+.btn--secondary:hover { background: var(--surface-sunken); }
+a.lcard, .res-card, .results li, .parts-col, .quote, .contact-line {
+  transition: transform .35s var(--spring), border-color .2s, box-shadow .3s var(--ease); }
+a.lcard:hover, .res-card:hover, .parts-col:hover, .results li:hover, .quote:hover, .contact-line:hover {
+  transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 22px 40px -26px rgba(12, 26, 18, .55); }
+.js .lcards[data-reveal].is-on a.lcard:hover { transform: translateY(-5px); }
+.lcard-ico, .res-out, .parts-num { transition: transform .4s var(--spring); }
+a.lcard:hover .lcard-ico { transform: rotate(-10deg) scale(1.12); }
+.res-card:hover .res-out { transform: translateX(4px); }
+.parts-col:hover .parts-num { transform: rotate(-8deg) scale(1.08); }
+.journey-mascot svg { transition: transform .45s var(--spring); }
+.journey:hover .journey-mascot svg { transform: rotate(-8deg) translateY(-4px); }
+.ring-photo { transition: transform .5s var(--spring), box-shadow .3s; }
+.ring-photo:hover { transform: rotate(-2deg) scale(1.03); }
+
+/* Dark cards keep a visible edge when the page is dark too */
+.lcard--open { border-color: color-mix(in srgb, var(--surface-dark), #7FA08C calc(var(--flip) * 60%)); }
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .bg-glow { display: none; }
+  .bg-field { transition: none; transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .mark { background-size: 100% 78%; transition: none; }
+}
+/* Phones: logo mark, three links, VI/EN and the light/dark switch on one row */
+@media (max-width: 480px) {
+  .site-header .container { gap: 6px; padding-inline: 12px; }
+  .nav { gap: 8px; }
+  .nav a { font-size: 13px; white-space: normal; line-height: 1.15; text-align: center; }
+  .lang button { min-width: 34px; padding: 0 4px; }
+  .theme-toggle { width: 38px; height: 38px; }
+  .site-header .logo-mark { width: 30px; height: 30px; }
+}
+/* Very small phones: the page follows the phone's own light/dark setting, so the switch can step aside */
+@media (max-width: 360px) { .theme-toggle { display: none; } }

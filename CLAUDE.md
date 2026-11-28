@@ -107,3 +107,12 @@ Search the repo for `[TODO` and for these tokens before publishing:
 - `[TODO: slides link]`, `[TODO: spreadsheet link]`: course materials on `course.html`.
 - `TODO: replace with a 1200x630 share image`: `og:image` on every page.
 - `Draft:` notes at the top of each lesson page.
+
+## Theme (light paper, scroll-to-dark, mouse effects)
+
+- One cream "paper" background on every page. Colours are mixed between a light set (`--L-*`) and a dark set (`--D-*`) at the end of `style.css` by `--flip` (0 = paper, 1 = deep forest). Use the normal tokens (`--surface`, `--text-primary`, `--border`, …) and they follow the flip.
+- **Scroll-to-dark:** add `data-flip` to a section and the page turns dark while that section is on screen (home cards, About experience, EL-101 part list). `assets/js/theme.js` sets `--flip`. It never turns dark before the reader scrolls.
+- **Light/dark switch** (moon/sun button in the header) is saved as `ecomlab-theme`. Without a saved choice the site follows the device setting.
+- **Lesson pages stay light:** they carry `data-no-dark` on `<html>`, so no switch and no flip, so screen recordings look the same.
+- **Background and mouse:** `theme.js` adds a map-dot layer with faint dashed routes, a paper grain, and a soft coral glow that follows the mouse. Hover effects use the `--spring` easing. Mouse effects are off on touch screens and for people who ask for reduced motion.
+- Headings use `.mark` for a hand-drawn highlighter that sweeps in when it scrolls into view.
