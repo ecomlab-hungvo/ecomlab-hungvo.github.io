@@ -2728,3 +2728,4 @@ html.is-presenting.is-idle, html.is-presenting.is-idle * { cursor: none; }
 @media (max-width: 899px) { .parts { grid-template-columns: minmax(0, 1fr); } }
 .lcards--list::before { display: none; }
 .lcard-code { padding: 6px 10px; border-radius: var(--radius-sm); background: var(--primary); color: var(--on-primary); font: 700 var(--fs-sm)/1 var(--font-mono); letter-spacing: .04em; }
+[hidden] { display: none !important; }
